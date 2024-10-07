@@ -1,0 +1,36 @@
+@import "../features/Navigation/index.scss";
+@import "../features/Navigation/components/Filter/index.scss";
+@import "../features/Navigation/components/Modal/index.scss";
+@import "../features/Navigation/components/Search/index.scss";
+@import "../features/Navigation/components/Sort/indes.scss";
+@import "./variables.scss";
+
+html {
+  box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+
+  font-family: "Inter", sans-serif;
+  color: $main-text-color;
+  background-color: $background-body-color;
+  overflow-x: hidden;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.page {
+  margin: 0 auto;
+  padding: 0;
+  width: 375px;
+  height: 100%;
+  background-color: $page-background-color;
+}

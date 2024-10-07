@@ -1,0 +1,74 @@
+@import "../../styles/variables.scss";
+
+.main {
+  margin-left: 16px;
+  margin-right: 16px;
+
+  .employee-list {
+    margin: 0;
+    padding: 0;
+
+    .employee-item {
+      list-style: none;
+      display: flex;
+      align-items: center;
+
+      .employee-content {
+        display: flex;
+        justify-content: left;
+        width: 100%;
+      }
+
+      .employee-photocontainer {
+        width: 88px;
+        height: 84px;
+      }
+
+      .employee-photo {
+        margin-right: 16px;
+        margin-top: 6px;
+        margin-bottom: 6px;
+        width: 72px;
+        height: 72px;
+        border-radius: 50%;
+      }
+
+      .employee-info {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        height: 100%;
+        height: 72px;
+
+        .employee-header {
+          display: flex;
+          align-items: center;
+          gap: 10px;
+
+          .employee-name {
+            padding: 3px 0;
+            margin: 0;
+            height: 26px;
+            font-size: 16px;
+            line-height: 20px;
+            color: $main-text-color;
+          }
+
+          .employee-tag {
+            margin-left: 4px;
+            font-size: 14px;
+            line-height: 18px;
+            color: $color-filterTabs-unActive;
+          }
+        }
+
+        .employee-role {
+          margin: 0;
+          line-height: 16px;
+          font-size: 13px;
+          color: $employee-status-color;
+        }
+      }
+    }
+  }
+}

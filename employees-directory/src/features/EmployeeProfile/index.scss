@@ -1,0 +1,159 @@
+@import "../../styles/variables.scss";
+
+.profile {
+  position: relative;
+  height: 812px;
+
+  &__arrow {
+    position: absolute;
+    top: 56px;
+    left: 12px;
+    width: 24px;
+    height: 24px;
+    padding: 6.75px 8.88px 6.71px 8.87px;
+  }
+
+  &__arrow-img {
+    width: 6.23px;
+    height: 10.54px;
+  }
+
+  &__title {
+    padding-bottom: 24px;
+    height: 280px;
+    width: 375px;
+    background-color: $background-input;
+  }
+
+  &__title-avatar {
+    margin: 0 auto;
+    width: 104px;
+    height: 104px;
+  }
+
+  &__title-content {
+    margin-top: 28px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+  }
+
+  &__name-container {
+    margin-top: 24px;
+
+    height: 56px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    text-align: center;
+  }
+
+  &__title-box {
+    margin: 0 auto;
+    height: 28px;
+  }
+
+  &__title-name {
+    margin: 0;
+    display: inline;
+    font-size: 24px;
+    font-weight: bold;
+    line-height: 28px;
+    color: $main-text-color;
+  }
+
+  &__title-tag {
+    margin-left: 4px;
+    height: 22px;
+
+    line-height: 22px;
+    font-size: 17px;
+    color: $color-filterTabs-unActive;
+  }
+
+  &__title-position {
+    height: 16px;
+    font-size: 13px;
+    line-height: 16px;
+    color: $employee-status-color;
+  }
+
+  &__info {
+    margin-left: 16px;
+    margin-right: 16px;
+    margin-top: 8px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 126px;
+  }
+
+  &__info-date {
+    padding-right: 4px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 60px;
+  }
+
+  &__info-bd {
+    position: relative;
+    //margin-left: 14px;
+    line-height: 20px;
+    font-size: 16px;
+    color: $main-text-color;
+
+    &::before {
+      content: "";
+      display: inline-block;
+      width: 20.03px;
+      height: 19.13px;
+      background: url("./img/star.svg") no-repeat center;
+      background-size: contain;
+      margin-right: 13.97px;
+      vertical-align: middle;
+    }
+  }
+
+  &__info-age {
+    line-height: 20px;
+    font-size: 16px;
+    color: $color-filterTabs-unActive;
+  }
+
+  &__info-phone {
+    position: relative;
+    display: flex;
+    align-items: center;
+    height: 60px;
+    font-size: 16px;
+    line-height: 20px;
+    color: $main-text-color;
+
+    &::before {
+      content: "";
+      display: inline-block;
+      margin-left: 2px;
+      margin-right: 14px;
+      width: 19.93px;
+      height: 19.87px;
+      background: url("./img/phone-icon.svg") no-repeat center;
+      background-size: contain;
+
+      vertical-align: middle;
+    }
+  }
+
+  &__collapse-line {
+    position: fixed;
+    bottom: 9px;
+    left: 50%;
+    margin-top: 20px;
+    transform: translateX(-50%);
+    width: 134px;
+    height: 5px;
+    border-radius: 2px;
+    background-color: $collapse-line;
+  }
+}

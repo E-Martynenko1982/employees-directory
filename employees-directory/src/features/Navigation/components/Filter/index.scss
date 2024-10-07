@@ -1,0 +1,41 @@
+@import "../../../../styles/variables.scss";
+
+.header__filter-list {
+  padding: 0;
+  margin-left: 16px;
+  margin-top: 8px;
+  margin-bottom: 0;
+  display: flex;
+  justify-content: space-between;
+  text-align: center;
+  height: 36px;
+  list-style: none;
+  overflow-x: auto;
+}
+
+.header__filter-list::-webkit-scrollbar {
+  height: 0;
+}
+
+.header__filter-item {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 36px;
+}
+
+.header__filter-item--button {
+  height: 20px;
+  font-size: 15px;
+  line-height: 20px;
+  color: $color-filterTabs-unActive;
+  border: none;
+  background: none;
+  outline: none;
+  cursor: pointer;
+}
+
+.header__filter-item--button-active {
+  border-bottom: solid $active-burger-color 3px;
+  color: $color-filterTabs-active;
+}

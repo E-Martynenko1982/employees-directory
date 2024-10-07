@@ -1,0 +1,27 @@
+@import "../../styles/variables.scss";
+
+@import "../../styles/variables.scss";
+
+.header {
+  &__icons-bar {
+    margin-right: 14.5px;
+    margin-left: 32px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 44px;
+  }
+
+  &__icons {
+    width: 67px;
+    display: flex;
+    justify-content: space-between;
+  }
+}
+
+.header__line {
+  position: absolute;
+  height: 2px;
+  border-bottom: solid $color-text-input-search 1px;
+  width: 375px;
+}
