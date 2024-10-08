@@ -20,15 +20,14 @@ interface EmployeesListProps {
 
 const EmployeesList: React.FC<EmployeesListProps> = ({ filterPosition }) => {
   const [users, setUsers] = useState<User[]>([]);
-  const [filteredUsers, setFilteredUsers] = useState<User[]>([])
+  const [filteredUsers, setFilteredUsers] = useState<User[]>([]);
   const navigate = useNavigate();
 
   useEffect(() => {
     const getUsers = async () => {
       try {
-        const data = await fetchDataUsers();
+        const data: User[] = await fetchDataUsers();
         setUsers(data);
-
       } catch (error) {
         console.log('Error data received', error);
       }
@@ -40,7 +39,7 @@ const EmployeesList: React.FC<EmployeesListProps> = ({ filterPosition }) => {
     if (filterPosition === 'Все') {
       setFilteredUsers(users);
     } else {
-      const filtered = users.filter(user =>
+      const filtered = users.filter((user: User) =>
         user.position.toLowerCase() === filterPosition.toLowerCase()
       );
       setFilteredUsers(filtered);
@@ -54,10 +53,19 @@ const EmployeesList: React.FC<EmployeesListProps> = ({ filterPosition }) => {
   return (
     <div className="main">
       {filteredUsers.length === 0 ? (
-        <div>Nobody in list</div>
+        <div className="search-error">
+          <img
+            src="../../icons/left-pointing-magnifying-glass_1f50d.png"
+            alt="search-img"
+          />
+          <div className="search-titles">
+            <h2>Мы никого не нашли</h2>
+            <span>Попробуй скорректировать запрос</span>
+          </div>
+        </div>
       ) : (
         <ul className="employee-list">
-          {filteredUsers.map((user) => (
+          {filteredUsers.map((user: User) => (
             <li
               className="employee-item"
               key={user.id}

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import "./index.scss";
 
 interface FilterProps {
@@ -6,46 +6,40 @@ interface FilterProps {
 }
 
 const Filter: React.FC<FilterProps> = ({ onFilterChange }) => {
+  const [selectedFilter, setSelectedFilter] = useState<string>('Все');
+
   const handleFilterClick = (filter: string) => {
+    setSelectedFilter(filter);
     onFilterChange(filter);
-  }
+  };
+
+  const filters = [
+    { label: 'Все', value: 'Все' },
+    { label: 'Designers', value: 'designer' },
+    { label: 'Analysts', value: 'analyst' },
+    { label: 'Managers', value: 'manager' },
+    { label: 'iOS', value: 'ios' },
+    { label: 'Android', value: 'android' },
+  ];
 
   return (
-    <>
-      <ul className="header__filter-list">
-        <li className="header__filter-item header__filter-item--button-active">
-          <button className="header__filter-item--button"
-            onClick={() => handleFilterClick('Все')}
-          >Все</button>
+    <ul className="header__filter-list">
+      {filters.map((filter) => (
+        <li
+          key={filter.value}
+          className={`header__filter-item ${selectedFilter === filter.value ? 'header__filter-item--button-active' : ''
+            }`}
+        >
+          <button
+            className="header__filter-item--button"
+            onClick={() => handleFilterClick(filter.value)}
+          >
+            {filter.label}
+          </button>
         </li>
-        <li className="header__filter-item">
-          <button className="header__filter-item--button"
-            onClick={() => handleFilterClick('designer')}
-          >Designers</button>
-        </li>
-        <li className="header__filter-item">
-          <button className="header__filter-item--button"
-            onClick={() => handleFilterClick('analyst')}
-          >Analysts</button>
-        </li>
-        <li className="header__filter-item">
-          <button className="header__filter-item--button"
-            onClick={() => handleFilterClick('manager')}
-          >Managers</button>
-        </li>
-        <li className="header__filter-item">
-          <button className="header__filter-item--button"
-            onClick={() => handleFilterClick('ios')}
-          >iOS</button>
-        </li>
-        <li className="header__filter-item">
-          <button className="header__filter-item--button"
-            onClick={() => handleFilterClick('android')}
-          >Android</button>
-        </li>
-      </ul>
-    </>
+      ))}
+    </ul>
   );
-}
+};
 
 export default Filter;
