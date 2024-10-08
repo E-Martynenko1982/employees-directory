@@ -1,12 +1,12 @@
 @import "../../styles/variables.scss";
 
 .main {
-  margin-left: 16px;
-  margin-right: 16px;
-  height: 100vh;
+  width: 375px;
+  background-color: $page-background-color;
 
   .employee-list {
-    margin: 0;
+    margin-left: 16px;
+    margin-right: 16px;
     padding: 0;
 
     .employee-item {

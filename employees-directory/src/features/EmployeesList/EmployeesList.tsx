@@ -16,9 +16,10 @@ interface User {
 
 interface EmployeesListProps {
   filterPosition: string;
+  searchQuery: string;
 }
 
-const EmployeesList: React.FC<EmployeesListProps> = ({ filterPosition }) => {
+const EmployeesList: React.FC<EmployeesListProps> = ({ filterPosition, searchQuery }) => {
   const [users, setUsers] = useState<User[]>([]);
   const [filteredUsers, setFilteredUsers] = useState<User[]>([]);
   const navigate = useNavigate();
@@ -36,15 +37,29 @@ const EmployeesList: React.FC<EmployeesListProps> = ({ filterPosition }) => {
   }, []);
 
   useEffect(() => {
-    if (filterPosition === 'Все') {
-      setFilteredUsers(users);
-    } else {
-      const filtered = users.filter((user: User) =>
+    let updatedUsers = users;
+
+    // Фильтрация по должности
+    if (filterPosition !== 'Все') {
+      updatedUsers = updatedUsers.filter((user: User) =>
         user.position.toLowerCase() === filterPosition.toLowerCase()
       );
-      setFilteredUsers(filtered);
     }
-  }, [users, filterPosition]);
+
+    // Фильтрация по строке поиска
+    if (searchQuery.trim() !== '') {
+      const query = searchQuery.trim().toLowerCase();
+      updatedUsers = updatedUsers.filter((user: User) => {
+        return (
+          user.name.toLowerCase().includes(query) ||
+          user.tag.toLowerCase().includes(query) ||
+          user.email.toLowerCase().includes(query)
+        );
+      });
+    }
+
+    setFilteredUsers(updatedUsers);
+  }, [users, filterPosition, searchQuery]);
 
   const handleItemClick = (id: string) => {
     navigate(`/employees/${id}`);

@@ -6,13 +6,18 @@ import EmployeesProfile from "./features/EmployeeProfile/EmployeesProfile.tsx";
 
 function App() {
   const [filterPosition, setFilterPosition] = useState<string>('Все');
+  const [searchQuery, setSearchQuery] = useState<string>('');
 
   return (
     <Router>
       <div className="page">
-        <Navigation onFilterChange={setFilterPosition} />
+        <Navigation
+          onFilterChange={setFilterPosition}
+          onSearchChange={setSearchQuery}
+
+        />
         <Routes>
-          <Route path="/" element={<EmployeesList filterPosition={filterPosition} />} />
+          <Route path="/" element={<EmployeesList filterPosition={filterPosition} searchQuery={searchQuery} />} />
           <Route path="/employees/:id" element={<EmployeesProfile />} />
         </Routes>
 

@@ -6,9 +6,10 @@ import './index.scss';
 
 interface NavigationProps {
   onFilterChange: (filter: string) => void;
+  onSearchChange: (query: string) => void;
 }
 
-const Navigation: React.FC<NavigationProps> = ({ onFilterChange }) => {
+const Navigation: React.FC<NavigationProps> = ({ onFilterChange, onSearchChange }) => {
   const location = useLocation();
   const isEmployeesProfile = location.pathname.startsWith('/employees/');
 
@@ -26,7 +27,7 @@ const Navigation: React.FC<NavigationProps> = ({ onFilterChange }) => {
 
       {!isEmployeesProfile && (
         <>
-          <Search />
+          <Search onSearchChange={onSearchChange} />
           <Filter onFilterChange={onFilterChange} />
           <div className="header__line"></div>
         </>
