@@ -1,5 +1,3 @@
-// Modal.tsx
-
 import React, { ChangeEvent } from 'react';
 import "./index.scss";
 

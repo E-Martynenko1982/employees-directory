@@ -2,9 +2,10 @@
 
 .main {
   width: 375px;
-  background-color: $page-background-color;
+  background-color: inherit;
 
   .employee-list {
+    position: relative;
     margin-left: 16px;
     margin-right: 16px;
     padding: 0;

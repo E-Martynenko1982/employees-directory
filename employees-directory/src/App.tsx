@@ -3,6 +3,7 @@ import { useState } from "react";
 import Navigation from "./features/Navigation/Navigation";
 import EmployeesList from "./features/EmployeesList/EmployeesList";
 import EmployeesProfile from "./features/EmployeeProfile/EmployeesProfile";
+import "./app.scss";
 
 function App() {
   const [filterPosition, setFilterPosition] = useState<string>('Все');
@@ -12,7 +13,7 @@ function App() {
 
   return (
     <Router>
-      <div className="page">
+      <div className={`page ${isModalOpen ? 'page--modal-open' : ''}`}>
         <Navigation
           onFilterChange={setFilterPosition}
           onSearchChange={setSearchQuery}
