@@ -1,65 +1,77 @@
-import React, { useState, useEffect } from "react";
-import { fetchDataUsers } from "../../gateway/gateway";
-import { useNavigate } from "react-router-dom";
+import React, { useState, useEffect } from 'react';
+import { fetchDataUsers, User } from '../../gateway/gateway';
+import { useNavigate } from 'react-router-dom';
+import { getDayOfYear } from '../../utils/utils';
 import "./index.scss";
-
-interface User {
-  avatar: string;
-  birthDate: number;
-  email: string;
-  id: string;
-  name: string;
-  phone: string;
-  position: string;
-  tag: string;
-}
 
 interface EmployeesListProps {
   filterPosition: string;
   searchQuery: string;
+  sortOrder: string;
 }
 
-const EmployeesList: React.FC<EmployeesListProps> = ({ filterPosition, searchQuery }) => {
-  const [users, setUsers] = useState<User[]>([]);
-  const [filteredUsers, setFilteredUsers] = useState<User[]>([]);
+const EmployeesList: React.FC<EmployeesListProps> = ({
+  filterPosition,
+  searchQuery,
+  sortOrder,
+}) => {
+  const [employees, setEmployees] = useState<User[]>([]);
+  const [filteredEmployees, setFilteredEmployees] = useState<User[]>([]);
   const navigate = useNavigate();
 
   useEffect(() => {
     const getUsers = async () => {
       try {
         const data: User[] = await fetchDataUsers();
-        setUsers(data);
+        setEmployees(data);
       } catch (error) {
-        console.log('Error data received', error);
+        console.error('Ошибка при загрузке сотрудников:', error);
       }
     };
     getUsers();
   }, []);
 
   useEffect(() => {
-    let updatedUsers = users;
+    let updatedEmployees = [...employees];
 
-    // Фильтрация по должности
+
     if (filterPosition !== 'Все') {
-      updatedUsers = updatedUsers.filter((user: User) =>
+      updatedEmployees = updatedEmployees.filter((user: User) =>
         user.position.toLowerCase() === filterPosition.toLowerCase()
       );
     }
 
-    // Фильтрация по строке поиска
+
     if (searchQuery.trim() !== '') {
       const query = searchQuery.trim().toLowerCase();
-      updatedUsers = updatedUsers.filter((user: User) => {
+      updatedEmployees = updatedEmployees.filter((user: User) => {
         return (
           user.name.toLowerCase().includes(query) ||
-          user.tag.toLowerCase().includes(query) ||
+          user.tag?.toLowerCase().includes(query) ||
           user.email.toLowerCase().includes(query)
         );
       });
     }
 
-    setFilteredUsers(updatedUsers);
-  }, [users, filterPosition, searchQuery]);
+
+    updatedEmployees = updatedEmployees.sort((a, b) => {
+      if (sortOrder === 'alphabetical') {
+        return a.name.localeCompare(b.name);
+      } else if (sortOrder === 'birthday') {
+        const aBirthday = new Date(a.birthDate);
+        const bBirthday = new Date(b.birthDate);
+
+        const aDayOfYear = getDayOfYear(aBirthday);
+        const bDayOfYear = getDayOfYear(bBirthday);
+
+        return aDayOfYear - bDayOfYear;
+      } else {
+        return 0;
+      }
+    });
+
+    setFilteredEmployees(updatedEmployees);
+  }, [employees, filterPosition, searchQuery, sortOrder]);
 
   const handleItemClick = (id: string) => {
     navigate(`/employees/${id}`);
@@ -67,7 +79,7 @@ const EmployeesList: React.FC<EmployeesListProps> = ({ filterPosition, searchQue
 
   return (
     <div className="main">
-      {filteredUsers.length === 0 ? (
+      {filteredEmployees.length === 0 ? (
         <div className="search-error">
           <img
             src="../../icons/left-pointing-magnifying-glass_1f50d.png"
@@ -80,7 +92,7 @@ const EmployeesList: React.FC<EmployeesListProps> = ({ filterPosition, searchQue
         </div>
       ) : (
         <ul className="employee-list">
-          {filteredUsers.map((user: User) => (
+          {filteredEmployees.map((user: User) => (
             <li
               className="employee-item"
               key={user.id}
@@ -111,3 +123,4 @@ const EmployeesList: React.FC<EmployeesListProps> = ({ filterPosition, searchQue
 };
 
 export default EmployeesList;
+

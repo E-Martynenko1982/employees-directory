@@ -7,9 +7,20 @@ import './index.scss';
 interface NavigationProps {
   onFilterChange: (filter: string) => void;
   onSearchChange: (query: string) => void;
+  onSortOrderChange: (sortOrder: string) => void;
+  sortOrder: string;
+  isModalOpen: boolean;
+  setIsModalOpen: (isOpen: boolean) => void;
 }
 
-const Navigation: React.FC<NavigationProps> = ({ onFilterChange, onSearchChange }) => {
+const Navigation: React.FC<NavigationProps> = ({
+  onFilterChange,
+  onSearchChange,
+  onSortOrderChange,
+  sortOrder,
+  isModalOpen,
+  setIsModalOpen,
+}) => {
   const location = useLocation();
   const isEmployeesProfile = location.pathname.startsWith('/employees/');
 
@@ -24,10 +35,15 @@ const Navigation: React.FC<NavigationProps> = ({ onFilterChange, onSearchChange 
         </div>
       </div>
 
-
       {!isEmployeesProfile && (
         <>
-          <Search onSearchChange={onSearchChange} />
+          <Search
+            onSearchChange={onSearchChange}
+            onSortOrderChange={onSortOrderChange}
+            sortOrder={sortOrder}
+            isModalOpen={isModalOpen}
+            setIsModalOpen={setIsModalOpen}
+          />
           <Filter onFilterChange={onFilterChange} />
           <div className="header__line"></div>
         </>

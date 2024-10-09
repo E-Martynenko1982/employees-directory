@@ -1,12 +1,14 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { useState } from "react";
 import Navigation from "./features/Navigation/Navigation";
-import EmployeesList from "./features/EmployeesList/EmployeesList.tsx";
-import EmployeesProfile from "./features/EmployeeProfile/EmployeesProfile.tsx";
+import EmployeesList from "./features/EmployeesList/EmployeesList";
+import EmployeesProfile from "./features/EmployeeProfile/EmployeesProfile";
 
 function App() {
   const [filterPosition, setFilterPosition] = useState<string>('Все');
   const [searchQuery, setSearchQuery] = useState<string>('');
+  const [sortOrder, setSortOrder] = useState<string>('alphabetical');
+  const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
 
   return (
     <Router>
@@ -14,17 +16,27 @@ function App() {
         <Navigation
           onFilterChange={setFilterPosition}
           onSearchChange={setSearchQuery}
-
+          onSortOrderChange={setSortOrder}
+          sortOrder={sortOrder}
+          isModalOpen={isModalOpen}
+          setIsModalOpen={setIsModalOpen}
         />
         <Routes>
-          <Route path="/" element={<EmployeesList filterPosition={filterPosition} searchQuery={searchQuery} />} />
+          <Route
+            path="/"
+            element={
+              <EmployeesList
+                filterPosition={filterPosition}
+                searchQuery={searchQuery}
+                sortOrder={sortOrder}
+              />
+            }
+          />
           <Route path="/employees/:id" element={<EmployeesProfile />} />
         </Routes>
-
       </div>
     </Router>
-
-  )
+  );
 }
 
-export default App
+export default App;

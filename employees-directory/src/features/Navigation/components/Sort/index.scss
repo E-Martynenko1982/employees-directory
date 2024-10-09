@@ -1,11 +1,10 @@
 @import "../../../../styles/variables.scss";
-
 .header__sort-burger {
   display: flex;
   align-items: center;
 }
 
-button.header__sort-burger-button {
+.header__sort-burger-button {
   margin-right: 12px;
   padding: 0;
   display: flex;
@@ -16,6 +15,10 @@ button.header__sort-burger-button {
 }
 
 .header__sort-burger-icon {
-  height: 20px;
-  width: 20px;
+  fill: currentColor;
+  transition: fill 0.3s;
+}
+
+.header__sort-burger-icon:hover {
+  fill: $active-burger-color;
 }
