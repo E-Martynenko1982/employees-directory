@@ -1,20 +1,18 @@
 import React, { ChangeEvent } from 'react';
 import "./index.scss";
+import { useAppDispatch, useAppSelector } from '../../../../store/hooks';
+import { setSortOrder } from '../Sort/sortSlice';
+import { setIsModalOpen } from './modalSlice';
 
-interface ModalProps {
-  onSortOrderChange: (sortOrder: string) => void;
-  currentSortOrder: string;
-  closeModal: () => void;
-}
 
-const Modal: React.FC<ModalProps> = ({
-  onSortOrderChange,
-  currentSortOrder,
-  closeModal,
-}) => {
+
+const Modal: React.FC = () => {
+  const dispatch = useAppDispatch();
+  const currentSortOrder = useAppSelector(state => state.sort.order);
+
   const handleSortChange = (event: ChangeEvent<HTMLInputElement>) => {
-    onSortOrderChange(event.target.value);
-    closeModal();
+    dispatch(setSortOrder(event.target.value));
+    dispatch(setIsModalOpen(false));
   };
 
   return (

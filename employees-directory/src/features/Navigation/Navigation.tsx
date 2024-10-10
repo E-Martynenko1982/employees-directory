@@ -4,23 +4,9 @@ import Filter from './components/Filter/Filter';
 import Search from './components/Search/Search';
 import './index.scss';
 
-interface NavigationProps {
-  onFilterChange: (filter: string) => void;
-  onSearchChange: (query: string) => void;
-  onSortOrderChange: (sortOrder: string) => void;
-  sortOrder: string;
-  isModalOpen: boolean;
-  setIsModalOpen: (isOpen: boolean) => void;
-}
 
-const Navigation: React.FC<NavigationProps> = ({
-  onFilterChange,
-  onSearchChange,
-  onSortOrderChange,
-  sortOrder,
-  isModalOpen,
-  setIsModalOpen,
-}) => {
+
+const Navigation: React.FC = () => {
   const location = useLocation();
   const isEmployeesProfile = location.pathname.startsWith('/employees/');
 
@@ -37,14 +23,8 @@ const Navigation: React.FC<NavigationProps> = ({
 
       {!isEmployeesProfile && (
         <>
-          <Search
-            onSearchChange={onSearchChange}
-            onSortOrderChange={onSortOrderChange}
-            sortOrder={sortOrder}
-            isModalOpen={isModalOpen}
-            setIsModalOpen={setIsModalOpen}
-          />
-          <Filter onFilterChange={onFilterChange} />
+          <Search />
+          <Filter />
           <div className="header__line"></div>
         </>
       )}

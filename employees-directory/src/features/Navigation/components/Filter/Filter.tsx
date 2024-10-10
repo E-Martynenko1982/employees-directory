@@ -1,16 +1,16 @@
-import React, { useState } from "react";
+import React from "react";
+import { useAppDispatch, useAppSelector } from "../../../../store/hooks";
+import { setFilterPosition } from "./filterSlice";
 import "./index.scss";
 
-interface FilterProps {
-  onFilterChange: (filter: string) => void;
-}
 
-const Filter: React.FC<FilterProps> = ({ onFilterChange }) => {
-  const [selectedFilter, setSelectedFilter] = useState<string>('Все');
+
+const Filter: React.FC = () => {
+  const dispatch = useAppDispatch();
+  const selectedFilter = useAppSelector((state) => state.filter.position);
 
   const handleFilterClick = (filter: string) => {
-    setSelectedFilter(filter);
-    onFilterChange(filter);
+    dispatch(setFilterPosition(filter));
   };
 
   const filters = [

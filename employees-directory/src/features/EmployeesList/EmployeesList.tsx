@@ -1,77 +1,24 @@
-import React, { useState, useEffect } from 'react';
-import { fetchDataUsers, User } from '../../gateway/gateway';
+import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { getDayOfYear } from '../../utils/utils';
 import "./index.scss";
+import { useAppDispatch, useAppSelector } from '../../store/hooks';
+import { fetchEmployees } from './employeesSlice';
+import { selectFilteredEmployees } from './employeesSelectors';
 
-interface EmployeesListProps {
-  filterPosition: string;
-  searchQuery: string;
-  sortOrder: string;
-}
-
-const EmployeesList: React.FC<EmployeesListProps> = ({
-  filterPosition,
-  searchQuery,
-  sortOrder,
-}) => {
-  const [employees, setEmployees] = useState<User[]>([]);
-  const [filteredEmployees, setFilteredEmployees] = useState<User[]>([]);
+const EmployeesList: React.FC = () => {
+  const dispatch = useAppDispatch();
   const navigate = useNavigate();
 
-  useEffect(() => {
-    const getUsers = async () => {
-      try {
-        const data: User[] = await fetchDataUsers();
-        setEmployees(data);
-      } catch (error) {
-        console.error('Ошибка при загрузке сотрудников:', error);
-      }
-    };
-    getUsers();
-  }, []);
+  // Используем селектор для получения отфильтрованных сотрудников
+  const filteredEmployees = useAppSelector(selectFilteredEmployees);
+  const status = useAppSelector((state) => state.employees.status);
+  const error = useAppSelector((state) => state.employees.error);
 
   useEffect(() => {
-    let updatedEmployees = [...employees];
-
-
-    if (filterPosition !== 'Все') {
-      updatedEmployees = updatedEmployees.filter((user: User) =>
-        user.position.toLowerCase() === filterPosition.toLowerCase()
-      );
+    if (status === 'idle') {
+      dispatch(fetchEmployees());
     }
-
-
-    if (searchQuery.trim() !== '') {
-      const query = searchQuery.trim().toLowerCase();
-      updatedEmployees = updatedEmployees.filter((user: User) => {
-        return (
-          user.name.toLowerCase().includes(query) ||
-          user.tag?.toLowerCase().includes(query) ||
-          user.email.toLowerCase().includes(query)
-        );
-      });
-    }
-
-
-    updatedEmployees = updatedEmployees.sort((a, b) => {
-      if (sortOrder === 'alphabetical') {
-        return a.name.localeCompare(b.name);
-      } else if (sortOrder === 'birthday') {
-        const aBirthday = new Date(a.birthDate);
-        const bBirthday = new Date(b.birthDate);
-
-        const aDayOfYear = getDayOfYear(aBirthday);
-        const bDayOfYear = getDayOfYear(bBirthday);
-
-        return aDayOfYear - bDayOfYear;
-      } else {
-        return 0;
-      }
-    });
-
-    setFilteredEmployees(updatedEmployees);
-  }, [employees, filterPosition, searchQuery, sortOrder]);
+  }, [status, dispatch]);
 
   const handleItemClick = (id: string) => {
     navigate(`/employees/${id}`);
@@ -79,7 +26,9 @@ const EmployeesList: React.FC<EmployeesListProps> = ({
 
   return (
     <div className="main">
-      {filteredEmployees.length === 0 ? (
+      {status === 'loading' && <div>Загрузка...</div>}
+      {status === 'failed' && <div>Ошибка: {error}</div>}
+      {filteredEmployees.length === 0 && status === 'succeeded' ? (
         <div className="search-error">
           <img
             src="../../icons/left-pointing-magnifying-glass_1f50d.png"
@@ -92,7 +41,7 @@ const EmployeesList: React.FC<EmployeesListProps> = ({
         </div>
       ) : (
         <ul className="employee-list">
-          {filteredEmployees.map((user: User) => (
+          {filteredEmployees.map((user) => (
             <li
               className="employee-item"
               key={user.id}
@@ -123,4 +72,3 @@ const EmployeesList: React.FC<EmployeesListProps> = ({
 };
 
 export default EmployeesList;
-

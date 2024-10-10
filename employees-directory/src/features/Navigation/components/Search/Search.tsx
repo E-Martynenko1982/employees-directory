@@ -1,25 +1,15 @@
-import Sort from "../Sort/Sort";
-import "./index.scss";
 import React, { ChangeEvent } from 'react';
+import Sort from "../Sort/Sort";
+import { useAppDispatch } from '../../../../store/hooks';
+import { setSearchQuery } from './searchSlice';
+import "./index.scss";
 
-interface SearchProps {
-  onSearchChange: (query: string) => void;
-  onSortOrderChange: (sortOrder: string) => void;
-  sortOrder: string;
-  isModalOpen: boolean;
-  setIsModalOpen: (isOpen: boolean) => void;
-}
-
-const Search: React.FC<SearchProps> = ({
-  onSearchChange,
-  onSortOrderChange,
-  sortOrder,
-  isModalOpen,
-  setIsModalOpen,
-}) => {
+const Search: React.FC = () => {
+  const dispatch = useAppDispatch();
   const handleInputChange = (event: ChangeEvent<HTMLInputElement>) => {
-    onSearchChange(event.target.value);
-  };
+    dispatch(setSearchQuery(event.target.value));
+  }
+
 
   return (
     <div className="header__search">
@@ -29,12 +19,7 @@ const Search: React.FC<SearchProps> = ({
         placeholder="Search by name, tag, email..."
         onChange={handleInputChange}
       />
-      <Sort
-        onSortOrderChange={onSortOrderChange}
-        sortOrder={sortOrder}
-        isModalOpen={isModalOpen}
-        setIsModalOpen={setIsModalOpen}
-      />
+      <Sort />
     </div>
   );
 };
