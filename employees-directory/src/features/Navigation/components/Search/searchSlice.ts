@@ -1,11 +1,17 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { RootState } from '../../../../store/store';
 
 interface SearchState {
   query: string;
 }
 
+const getSearchFromURL = (): string => {
+  const params = new URLSearchParams(window.location.search);
+  return params.get('search') || '';
+};
+
 const initialState: SearchState = {
-  query: '',
+  query: getSearchFromURL(),
 };
 
 const searchSlice = createSlice({
@@ -17,5 +23,7 @@ const searchSlice = createSlice({
     },
   },
 });
+
 export const { setSearchQuery } = searchSlice.actions;
+export const selectSearchQuery = (state: RootState) => state.search.query;
 export default searchSlice.reducer;

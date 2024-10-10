@@ -1,16 +1,20 @@
+
 import React from "react";
-import { useAppDispatch, useAppSelector } from "../../../../store/hooks";
-import { setFilterPosition } from "./filterSlice";
 import "./index.scss";
-
-
+import { useAppDispatch, useAppSelector } from '../../../../store/hooks';
+import { setFilterPosition, selectFilterPosition } from '../Filter/filterSlice';
+import { useSearchParams } from 'react-router-dom';
 
 const Filter: React.FC = () => {
   const dispatch = useAppDispatch();
-  const selectedFilter = useAppSelector((state) => state.filter.position);
+  const selectedFilter = useAppSelector(selectFilterPosition);
+  const [searchParams, setSearchParams] = useSearchParams();
 
   const handleFilterClick = (filter: string) => {
     dispatch(setFilterPosition(filter));
+
+    searchParams.set('filter', filter);
+    setSearchParams(searchParams);
   };
 
   const filters = [
@@ -27,8 +31,7 @@ const Filter: React.FC = () => {
       {filters.map((filter) => (
         <li
           key={filter.value}
-          className={`header__filter-item ${selectedFilter === filter.value ? 'header__filter-item--button-active' : ''
-            }`}
+          className={`header__filter-item ${selectedFilter === filter.value ? 'header__filter-item--button-active' : ''}`}
         >
           <button
             className="header__filter-item--button"

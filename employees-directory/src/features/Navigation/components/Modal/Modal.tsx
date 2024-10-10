@@ -1,17 +1,24 @@
+
 import React, { ChangeEvent } from 'react';
 import "./index.scss";
 import { useAppDispatch, useAppSelector } from '../../../../store/hooks';
-import { setSortOrder } from '../Sort/sortSlice';
-import { setIsModalOpen } from './modalSlice';
-
-
+import { setSortOrder, selectSortOrder } from '../Sort/sortSlice';
+import { setIsModalOpen } from '../Modal/modalSlice';
+import { useSearchParams } from 'react-router-dom';
 
 const Modal: React.FC = () => {
   const dispatch = useAppDispatch();
-  const currentSortOrder = useAppSelector(state => state.sort.order);
+  const currentSortOrder = useAppSelector(selectSortOrder);
+  const [searchParams, setSearchParams] = useSearchParams();
 
   const handleSortChange = (event: ChangeEvent<HTMLInputElement>) => {
-    dispatch(setSortOrder(event.target.value));
+    const sortOrder = event.target.value;
+    dispatch(setSortOrder(sortOrder));
+
+
+    searchParams.set('sort', sortOrder);
+    setSearchParams(searchParams);
+
     dispatch(setIsModalOpen(false));
   };
 

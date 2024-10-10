@@ -1,11 +1,17 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { RootState } from '../../../../store/store';
 
 interface SortState {
   order: string;
 }
 
+const getSortFromURL = (): string => {
+  const params = new URLSearchParams(window.location.search);
+  return params.get('sort') || 'alphabetical';
+};
+
 const initialState: SortState = {
-  order: 'alphabetical',
+  order: getSortFromURL(),
 };
 
 const sortSlice = createSlice({
@@ -19,4 +25,5 @@ const sortSlice = createSlice({
 });
 
 export const { setSortOrder } = sortSlice.actions;
+export const selectSortOrder = (state: RootState) => state.sort.order;
 export default sortSlice.reducer;

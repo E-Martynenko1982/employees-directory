@@ -1,11 +1,17 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { RootState } from '../../../../store/store';
 
 interface FilterState {
   position: string;
 }
 
+const getFilterFromURL = (): string => {
+  const params = new URLSearchParams(window.location.search);
+  return params.get('filter') || 'Все';
+};
+
 const initialState: FilterState = {
-  position: 'Все',
+  position: getFilterFromURL(),
 };
 
 const filterSlice = createSlice({
@@ -19,4 +25,5 @@ const filterSlice = createSlice({
 });
 
 export const { setFilterPosition } = filterSlice.actions;
+export const selectFilterPosition = (state: RootState) => state.filter.position;
 export default filterSlice.reducer;
