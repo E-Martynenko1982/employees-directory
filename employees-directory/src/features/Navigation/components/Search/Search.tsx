@@ -32,6 +32,7 @@ const Search: React.FC = () => {
         placeholder="Search by name, tag, email..."
         value={searchQuery}
         onChange={handleInputChange}
+        name='search'
       />
       <Sort />
     </div>

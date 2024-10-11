@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { fetchDataUserById, User } from '../../gateway/gateway';
 import { calculateAge } from '../../utils/utils';
+import starIcon from "../../icons/star.svg";
+import phoneIcon from "../../icons/phone-icon.svg";
 import "./index.scss";
 
 const EmployeesProfile: React.FC = () => {
@@ -52,10 +54,15 @@ const EmployeesProfile: React.FC = () => {
 
       <div className="profile__info">
         <div className="profile__info-date">
-          <span className="profile__info-bd">{new Date(user.birthDate).toLocaleDateString()}</span>
+          <span className="profile__info-bd">
+            <img src={starIcon} alt="star-icon" className='profile__icon' />
+            {new Date(user.birthDate).toLocaleDateString()}
+          </span>
           <span className="profile__info-age">{calculateAge(user.birthDate)} лет</span>
         </div>
-        <span className="profile__info-phone">{user.phone}</span>
+        <span className="profile__info-phone">
+          <img src={phoneIcon} alt="phone-icon" className="profile__icon" />
+          {user.phone}</span>
       </div>
       <div className="profile__collapse-line"></div>
     </div>

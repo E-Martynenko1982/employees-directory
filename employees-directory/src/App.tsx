@@ -4,9 +4,7 @@ import EmployeesList from "./features/EmployeesList/EmployeesList";
 import EmployeesProfile from "./features/EmployeeProfile/EmployeesProfile";
 import "./app.scss";
 
-function App() {
-
-
+const App: React.FC = () => {
   return (
     <Router>
       <div className="page">

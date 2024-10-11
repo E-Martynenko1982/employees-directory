@@ -11,7 +11,7 @@ const Navigation: React.FC = () => {
   const isEmployeesProfile = location.pathname.startsWith('/employees/');
 
   return (
-    <div className="header">
+    <div className={`header ${isEmployeesProfile ? 'header__icons-bar--profile' : ''}`}>
       <div className="header__icons-bar">
         <div className="header__time">9:41</div>
         <div className="header__icons">

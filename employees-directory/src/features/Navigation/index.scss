@@ -10,6 +10,10 @@
     justify-content: space-between;
     align-items: center;
     height: 44px;
+
+    &--profile {
+      background-color: $background-input;
+    }
   }
 
   &__icons {
