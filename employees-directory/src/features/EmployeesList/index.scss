@@ -1,8 +1,15 @@
 @import "../../styles/variables.scss";
+@import "../../styles/breackpoints.scss";
 
 .main {
   width: 375px;
   background-color: inherit;
+
+  @include desktop {
+    position: relative;
+    width: 1280px;
+    height: 100vh;
+  }
 
   .employee-list {
     position: relative;
@@ -83,6 +90,20 @@
   text-align: center;
   align-items: center;
   height: 100vh;
+
+  @include desktop {
+    margin: 0;
+    width: 343px;
+    height: 150px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
 }
 
 .search-error img {

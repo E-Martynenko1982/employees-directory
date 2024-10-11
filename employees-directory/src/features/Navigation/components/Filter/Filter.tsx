@@ -34,7 +34,7 @@ const Filter: React.FC = () => {
           className={`header__filter-item ${selectedFilter === filter.value ? 'header__filter-item--button-active' : ''}`}
         >
           <button
-            className="header__filter-item--button"
+            className={`header__filter-item--button ${selectedFilter === filter.value ? 'header__filter-item--button-active' : ''}`}
             onClick={() => handleFilterClick(filter.value)}
           >
             {filter.label}

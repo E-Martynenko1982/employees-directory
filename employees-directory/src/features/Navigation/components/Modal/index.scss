@@ -1,18 +1,25 @@
 @import "../../../../styles/variables.scss";
+@import "../../../../styles/breackpoints.scss";
 
 .modal {
   position: fixed;
   bottom: 0;
-  left: 50%; /* Центровка по горизонтали */
-  transform: translateX(-50%); /* Сдвигаем на половину ширины, чтобы по-настоящему центрировать */
+  left: 50%;
+  transform: translateX(-50%);
   z-index: 2;
-
   width: 359px;
   height: 218px;
   background-color: $color-filterTabs-unActive;
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
-  box-shadow: 0px -2px 10px rgba(0, 0, 0, 0.1); /* Добавление тени для лучшего выделения */
+  box-shadow: 0px -2px 10px rgba(0, 0, 0, 0.1);
+
+  @include desktop {
+    bottom: 50%;
+    width: 373px;
+    height: 192px;
+    border-radius: 10px;
+  }
 
   &__sort-container {
     display: flex;
@@ -81,4 +88,8 @@
   width: 143px;
   background-color: $collapse-line;
   border-radius: 3px;
+
+  @include desktop {
+    display: none;
+  }
 }

@@ -1,4 +1,5 @@
 @import "../../styles/variables.scss";
+@import "../../styles/breackpoints.scss";
 
 .profile {
   position: relative;
@@ -12,6 +13,11 @@
     height: 24px;
     padding: 6.75px 8.88px 6.71px 8.87px;
     cursor: pointer;
+
+    @include desktop {
+      top: 22px;
+      left: 16px;
+    }
   }
 
   &__arrow-img {
@@ -24,6 +30,10 @@
     height: 280px;
     width: 375px;
     background-color: $background-input;
+
+    @include desktop {
+      width: 1280px;
+    }
   }
 
   &__title-avatar {
@@ -39,6 +49,10 @@
     flex-direction: column;
     justify-content: center;
     text-align: center;
+
+    @include desktop {
+      padding-top: 72px;
+    }
   }
 
   &__name-container {
@@ -103,6 +117,7 @@
     position: relative;
     line-height: 20px;
     font-size: 16px;
+    font-weight: $medium;
     color: $main-text-color;
   }
 
@@ -118,6 +133,7 @@
     align-items: center;
     height: 60px;
     font-size: 16px;
+    font-weight: $medium;
     line-height: 20px;
     color: $main-text-color;
   }
@@ -140,5 +156,9 @@
     border-radius: 2px;
     background-color: $collapse-line;
     cursor: pointer;
+
+    @include desktop {
+      display: none;
+    }
   }
 }

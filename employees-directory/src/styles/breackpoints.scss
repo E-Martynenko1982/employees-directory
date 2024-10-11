@@ -1,0 +1,13 @@
+@import "./variables.scss";
+
+@mixin desktop {
+  @media screen and (min-width: $breakpoint-desktop) {
+    @content;
+  }
+}
+
+@mixin mobile {
+  @media screen and (max-width: #{$breakpoint-desktop - 1}) {
+    @content;
+  }
+}

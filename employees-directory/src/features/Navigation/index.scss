@@ -1,9 +1,12 @@
 @import "../../styles/variables.scss";
-
-@import "../../styles/variables.scss";
+@import "./../../styles/breackpoints.scss";
 
 .header {
   &__icons-bar {
+    @include desktop {
+      display: none;
+    }
+
     margin-right: 14.5px;
     margin-left: 32px;
     display: flex;
@@ -21,11 +24,27 @@
     display: flex;
     justify-content: space-between;
   }
+
+  &__desktop-content {
+    display: none;
+    @include desktop {
+      display: block;
+      padding-left: 24px;
+      padding-top: 8px;
+      padding-bottom: 12px;
+      height: 48px;
+      font-size: 24px;
+      font-weight: bold;
+      line-height: 28px;
+    }
+  }
 }
 
 .header__line {
-  position: absolute;
-  height: 2px;
   border-bottom: solid $color-text-input-search 1px;
   width: 375px;
+
+  @include desktop {
+    width: 1280px;
+  }
 }

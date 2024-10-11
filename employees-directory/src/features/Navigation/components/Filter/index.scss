@@ -1,4 +1,5 @@
 @import "../../../../styles/variables.scss";
+@import "../../../../styles/breackpoints.scss";
 
 .header__filter-list {
   padding: 0;
@@ -11,6 +12,10 @@
   height: 36px;
   list-style: none;
   overflow-x: auto;
+
+  @include desktop {
+    justify-content: start;
+  }
 }
 
 .header__filter-list::-webkit-scrollbar {
@@ -24,6 +29,11 @@
   height: 36px;
 }
 
+.header__filter-item--button-active {
+  border-bottom: solid $active-burger-color 3px;
+  color: $color-filterTabs-active;
+}
+
 .header__filter-item--button {
   height: 20px;
   font-size: 15px;
@@ -33,9 +43,4 @@
   background: none;
   outline: none;
   cursor: pointer;
-}
-
-.header__filter-item--button-active {
-  border-bottom: solid $active-burger-color 3px;
-  color: $color-filterTabs-active;
 }

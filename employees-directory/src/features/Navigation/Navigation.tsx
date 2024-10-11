@@ -12,6 +12,7 @@ const Navigation: React.FC = () => {
 
   return (
     <div className={`header ${isEmployeesProfile ? 'header__icons-bar--profile' : ''}`}>
+
       <div className="header__icons-bar">
         <div className="header__time">9:41</div>
         <div className="header__icons">
@@ -20,6 +21,11 @@ const Navigation: React.FC = () => {
           <img src="/icons/battery.png" alt="battery" />
         </div>
       </div>
+      {!isEmployeesProfile && (
+        <div className="header__desktop-content">
+          Search
+        </div>
+      )}
 
       {!isEmployeesProfile && (
         <>
