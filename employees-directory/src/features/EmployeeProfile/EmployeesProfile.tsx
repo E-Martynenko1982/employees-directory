@@ -2,8 +2,8 @@ import React, { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { fetchDataUserById, User } from '../../gateway/gateway';
 import { calculateAge } from '../../utils/utils';
-import starIcon from "../../icons/star.svg";
-import phoneIcon from "../../icons/phone-icon.svg";
+import starIcon from "../../public/star.svg";
+import phoneIcon from "../../public/phone-icon.svg";
 import "./index.scss";
 
 const EmployeesProfile: React.FC = () => {

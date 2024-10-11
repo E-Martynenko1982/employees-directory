@@ -1,9 +1,8 @@
-
 import React from "react";
-import "./index.scss";
 import { useAppDispatch, useAppSelector } from '../../../../store/hooks';
 import { setFilterPosition, selectFilterPosition } from '../Filter/filterSlice';
 import { useSearchParams } from 'react-router-dom';
+import "./index.scss";
 
 const Filter: React.FC = () => {
   const dispatch = useAppDispatch();

@@ -1,10 +1,9 @@
-// features/Navigation/components/Search/Search.tsx
 import React, { ChangeEvent } from 'react';
 import Sort from "../Sort/Sort";
-import "./index.scss";
 import { useAppDispatch, useAppSelector } from '../../../../store/hooks';
 import { setSearchQuery, selectSearchQuery } from '../Search/searchSlice';
 import { useSearchParams } from 'react-router-dom';
+import "./index.scss";
 
 const Search: React.FC = () => {
   const dispatch = useAppDispatch();

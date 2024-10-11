@@ -1,6 +1,6 @@
 import React from 'react';
 import Modal from '../Modal/Modal';
-import burgerIcon from "../../../../icons/burger.svg";
+import burgerIcon from "../../../../public/burger.svg";
 import { useAppDispatch, useAppSelector } from '../../../../store/hooks';
 import { toggleModal } from '../Modal/modalSlice';
 import "./index.scss";

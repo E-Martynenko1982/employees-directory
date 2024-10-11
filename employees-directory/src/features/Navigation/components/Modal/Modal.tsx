@@ -1,10 +1,9 @@
-
 import React, { ChangeEvent } from 'react';
-import "./index.scss";
 import { useAppDispatch, useAppSelector } from '../../../../store/hooks';
 import { setSortOrder, selectSortOrder } from '../Sort/sortSlice';
 import { setIsModalOpen } from '../Modal/modalSlice';
 import { useSearchParams } from 'react-router-dom';
+import "./index.scss";
 
 const Modal: React.FC = () => {
   const dispatch = useAppDispatch();
