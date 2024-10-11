@@ -3,10 +3,6 @@
 
 .header {
   &__icons-bar {
-    @include desktop {
-      display: none;
-    }
-
     margin-right: 14.5px;
     margin-left: 32px;
     display: flex;
@@ -16,6 +12,10 @@
 
     &--profile {
       background-color: $background-input;
+    }
+
+    @include desktop {
+      display: none;
     }
   }
 
