@@ -7,6 +7,7 @@ import svgr from 'vite-plugin-svgr';
 export default defineConfig({
   plugins: [react(), svgr()],
   root: 'src',
+  publicDir: 'public',
   build: {
     outDir: '../dist',
     rollupOptions: {
