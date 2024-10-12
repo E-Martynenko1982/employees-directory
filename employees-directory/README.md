@@ -2,7 +2,7 @@
 
 ### [Site link](https://670a3e67e05446f96cc30dcf--stalwart-concha-5ac09b.netlify.app//)
 
-Layout support desktop (up-to-1920) version
+Layout support desktop (up-to-1280) version
 
 ### The tech stack is:
 
