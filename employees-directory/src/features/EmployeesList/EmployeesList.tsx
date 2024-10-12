@@ -18,6 +18,7 @@ const EmployeesList: React.FC = () => {
   useEffect(() => {
     if (status === 'idle') {
       dispatch(fetchEmployees());
+
     }
   }, [status, dispatch]);
 
@@ -26,6 +27,7 @@ const EmployeesList: React.FC = () => {
   };
 
   return (
+
     <div className="main">
       {status === 'loading' && (
         <ul className="employee-list">
@@ -36,7 +38,7 @@ const EmployeesList: React.FC = () => {
             ))}
         </ul>
       )}
-      {status === 'failed' && <div>Ошибка: {error}</div>}
+      {status === 'failed' && <div>Ошибка соединения: {error}</div>}
       {status === 'succeeded' && filteredEmployees.length === 0 ? (
         <div className="search-error">
           <img
@@ -52,6 +54,7 @@ const EmployeesList: React.FC = () => {
         status === 'succeeded' && (
           <ul className="employee-list">
             {filteredEmployees.map((user) => (
+
               <li
                 className="employee-item"
                 key={user.id}
