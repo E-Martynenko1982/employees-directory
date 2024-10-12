@@ -4,6 +4,7 @@ import { fetchDataUserById, User } from '../../gateway/gateway';
 import { calculateAge } from '../../utils/utils';
 import starIcon from "../../public/img/star.svg";
 import phoneIcon from "../../public/img/phone-icon.svg";
+import ArrowIcon from "../../public/img/left-arrow.svg";
 import "./index.scss";
 
 const EmployeesProfile: React.FC = () => {
@@ -38,7 +39,7 @@ const EmployeesProfile: React.FC = () => {
       <div className="profile__title">
         <div className="profile__title-content">
           <div className="profile__arrow" onClick={handleBackClick}>
-            <img className="profile__arrow-img" src="../../public/img/left-arrow.svg" alt="arrow" />
+            <img className="profile__arrow-img" src={ArrowIcon} alt="arrow" />
           </div>
           <img className="profile__title-avatar" src={user.avatar} alt="avatar" />
           <div className="profile__name-container">
