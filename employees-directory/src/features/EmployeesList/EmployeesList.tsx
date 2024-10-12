@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { useAppDispatch, useAppSelector } from '../../store/hooks';
+import { useAppDispatch, useAppSelector } from '../../store/hooks'; // Используем хуки для селекторов и диспатча
 import { fetchEmployees } from './employeesSlice';
 import { selectFilteredEmployees } from './employeesSelectors';
 import EmployeeSkeleton from './EmployeeSkeleton/EmployeeSkeleton';
@@ -11,14 +11,15 @@ const EmployeesList: React.FC = () => {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
 
+  // Получаем необходимые данные из Redux
   const filteredEmployees = useAppSelector(selectFilteredEmployees);
   const status = useAppSelector((state) => state.employees.status);
   const error = useAppSelector((state) => state.employees.error);
 
+  // При первом рендере или когда статус "idle", загружаем список сотрудников
   useEffect(() => {
     if (status === 'idle') {
       dispatch(fetchEmployees());
-
     }
   }, [status, dispatch]);
 
@@ -27,7 +28,6 @@ const EmployeesList: React.FC = () => {
   };
 
   return (
-
     <div className="main">
       {status === 'loading' && (
         <ul className="employee-list">
@@ -38,7 +38,7 @@ const EmployeesList: React.FC = () => {
             ))}
         </ul>
       )}
-      {status === 'failed' && <div>Ошибка соединения: {error}</div>}
+
       {status === 'succeeded' && filteredEmployees.length === 0 ? (
         <div className="search-error">
           <img
@@ -51,10 +51,9 @@ const EmployeesList: React.FC = () => {
           </div>
         </div>
       ) : (
-        status === 'succeeded' && (
+        status !== 'loading' && (
           <ul className="employee-list">
             {filteredEmployees.map((user) => (
-
               <li
                 className="employee-item"
                 key={user.id}
@@ -81,8 +80,14 @@ const EmployeesList: React.FC = () => {
           </ul>
         )
       )}
+
+      {/* Ошибка соединения выводится, но список остается */}
+      {status === 'failed' && (
+        <div className='main-error'>Ошибка соединения: {error}</div>
+      )}
     </div>
   );
 };
 
 export default EmployeesList;
+
