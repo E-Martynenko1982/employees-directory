@@ -1,6 +1,6 @@
-# Project: Google calendar
+# Project: Employees directory
 
-### [Site link](https://....netlify.app/)
+### [Site link](https://670a3e67e05446f96cc30dcf--stalwart-concha-5ac09b.netlify.app//)
 
 Layout support desktop (up-to-1920) version
 
@@ -11,6 +11,8 @@ Layout support desktop (up-to-1920) version
 - [Sass (Scss)](https://sass-lang.com/)
 - [BEM methodology](https://en.bem.info/methodology/)
 - [React](https://reactjs.org/)
+- [Typescript](https://www.typescriptlang.org/)
+- [Redux Toolkit](https://redux-toolkit.js.org/)
 
 ### Author
 
