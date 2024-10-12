@@ -39,7 +39,7 @@ const EmployeesList: React.FC = () => {
       {status === 'succeeded' && filteredEmployees.length === 0 ? (
         <div className="search-error">
           <img
-            src="../../public/img /left-pointing-magnifying-glass_1f50d.png"
+            src="../../public/img/left-pointing-magnifying-glass_1f50d.png"
             alt="search-img"
           />
           <div className="search-titles">
