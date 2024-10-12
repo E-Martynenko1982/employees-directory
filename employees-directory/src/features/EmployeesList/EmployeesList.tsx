@@ -1,10 +1,10 @@
 import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import './index.scss';
 import { useAppDispatch, useAppSelector } from '../../store/hooks';
 import { fetchEmployees } from './employeesSlice';
 import { selectFilteredEmployees } from './employeesSelectors';
 import EmployeeSkeleton from './EmployeeSkeleton/EmployeeSkeleton';
+import './index.scss';
 
 const EmployeesList: React.FC = () => {
   const dispatch = useAppDispatch();
@@ -39,7 +39,7 @@ const EmployeesList: React.FC = () => {
       {status === 'succeeded' && filteredEmployees.length === 0 ? (
         <div className="search-error">
           <img
-            src="../../public/left-pointing-magnifying-glass_1f50d.png"
+            src="../../public/img /left-pointing-magnifying-glass_1f50d.png"
             alt="search-img"
           />
           <div className="search-titles">
