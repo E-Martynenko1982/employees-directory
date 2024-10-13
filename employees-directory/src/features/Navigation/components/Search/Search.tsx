@@ -15,7 +15,6 @@ const Search: React.FC = () => {
     const query = event.target.value;
     dispatch(setSearchQuery(query));
 
-
     if (query) {
       searchParams.set('search', query);
     } else {
@@ -37,7 +36,6 @@ const Search: React.FC = () => {
           name='search'
         />
       </div>
-
       <Sort />
     </div>
   );

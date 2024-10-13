@@ -38,6 +38,29 @@
       line-height: 28px;
     }
   }
+
+  &__network-error {
+    position: fixed;
+    bottom: 40px;
+    left: 17%;
+    width: 343px;
+    height: 64px;
+    background-color: $error-network-background;
+    border-radius: 10px;
+    z-index: 2;
+
+    @include desktop {
+      display: none;
+    }
+  }
+
+  &__network-error p {
+    margin: 11px 16px;
+    line-height: 18px;
+    font-size: 14px;
+    font-weight: $regular;
+    color: $page-background-color;
+  }
 }
 
 .header__line {

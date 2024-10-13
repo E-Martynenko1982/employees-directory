@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { useAppDispatch, useAppSelector } from '../../store/hooks'; // Используем хуки для селекторов и диспатча
+import { useAppDispatch, useAppSelector } from '../../store/hooks';
 import { fetchEmployees } from './employeesSlice';
 import { selectFilteredEmployees } from './employeesSelectors';
 import EmployeeSkeleton from './EmployeeSkeleton/EmployeeSkeleton';
@@ -11,12 +11,9 @@ const EmployeesList: React.FC = () => {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
 
-  // Получаем необходимые данные из Redux
   const filteredEmployees = useAppSelector(selectFilteredEmployees);
   const status = useAppSelector((state) => state.employees.status);
-  const error = useAppSelector((state) => state.employees.error);
 
-  // При первом рендере или когда статус "idle", загружаем список сотрудников
   useEffect(() => {
     if (status === 'idle') {
       dispatch(fetchEmployees());
@@ -79,11 +76,6 @@ const EmployeesList: React.FC = () => {
             ))}
           </ul>
         )
-      )}
-
-      {/* Ошибка соединения выводится, но список остается */}
-      {status === 'failed' && (
-        <div className='main-error'>Ошибка соединения: {error}</div>
       )}
     </div>
   );

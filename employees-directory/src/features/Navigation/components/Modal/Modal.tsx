@@ -14,10 +14,8 @@ const Modal: React.FC = () => {
     const sortOrder = event.target.value;
     dispatch(setSortOrder(sortOrder));
 
-
     searchParams.set('sort', sortOrder);
     setSearchParams(searchParams);
-
     dispatch(setIsModalOpen(false));
   };
 

@@ -2,9 +2,12 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Navigation from "./features/Navigation/Navigation";
 import EmployeesList from "./features/EmployeesList/EmployeesList";
 import EmployeesProfile from "./features/EmployeeProfile/EmployeesProfile";
+import useNetworkStatus from "./utils/customHooks/useNetworkStatus";
 import "./app.scss";
 
 const App: React.FC = () => {
+  useNetworkStatus();
+
   return (
     <Router>
       <div className="page">

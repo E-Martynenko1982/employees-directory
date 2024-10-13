@@ -11,15 +11,15 @@
   }
 
   .employee-list {
-    position: relative;
     margin-left: 16px;
     margin-right: 16px;
     padding: 0;
+    z-index: 1;
 
     .employee-item {
-      list-style: none;
       display: flex;
       align-items: center;
+      list-style: none;
       cursor: pointer;
 
       .employee-content {

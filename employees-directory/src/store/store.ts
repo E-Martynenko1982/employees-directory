@@ -1,34 +1,32 @@
+// store.ts
 import { configureStore, combineReducers } from '@reduxjs/toolkit';
 import filterReducer from '../features/Navigation/components/Filter/filterSlice';
 import searchReducer from '../features/Navigation/components/Search/searchSlice';
 import sortReducer from '../features/Navigation/components/Sort/sortSlice';
 import modalReducer from '../features/Navigation/components/Modal/modalSlice';
 import employeesReducer from '../features/EmployeesList/employeesSlice';
-import connectionReducer from '../features/Connection/connectionSlice'; // Новый слайс для состояния соединения
+import connectionReducer from '../features/Connection/connectionSlice';
 
 import { persistStore, persistReducer } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 
-// Комбинирование всех редьюсеров, включая новый connectionReducer
 const rootReducer = combineReducers({
   filter: filterReducer,
   search: searchReducer,
   sort: sortReducer,
   modal: modalReducer,
   employees: employeesReducer,
-  connection: connectionReducer, // Добавляем новый слайс
+  connection: connectionReducer, // Добавили connectionReducer
 });
 
-// Конфигурация для сохранения состояния через redux-persist
 const persistConfig = {
   key: 'root',
   storage,
-  whitelist: ['filter', 'search', 'sort'], // Состояние соединения можно не сохранять
+  whitelist: ['filter', 'search', 'sort'],
 };
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);
 
-// Конфигурация и создание store
 export const store = configureStore({
   reducer: persistedReducer,
   middleware: getDefaultMiddleware =>
@@ -40,9 +38,7 @@ export const store = configureStore({
     }),
 });
 
-// Создание persistor для поддержки сохранения состояния
 export const persistor = persistStore(store);
 
-// Типизация состояния и dispatch
 export type RootState = ReturnType<typeof store.getState>;
 export type AppDispatch = typeof store.dispatch;
