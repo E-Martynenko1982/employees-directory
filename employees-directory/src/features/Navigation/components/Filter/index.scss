@@ -2,20 +2,16 @@
 @import "../../../../styles/breackpoints.scss";
 
 .header__filter-list {
-  padding: 0;
-  margin-left: 16px;
-  margin-top: 8px;
-  margin-bottom: 0;
   display: flex;
   justify-content: space-between;
-  text-align: center;
-  height: 36px;
+  padding: 0;
+  margin-left: 16px;
+  margin-right: 0;
+  margin-top: 8px;
+  margin-bottom: 0;
+  width: 467px;
   list-style: none;
   overflow-x: auto;
-
-  @include desktop {
-    justify-content: start;
-  }
 }
 
 .header__filter-list::-webkit-scrollbar {
@@ -23,9 +19,9 @@
 }
 
 .header__filter-item {
+  padding: 0;
   display: flex;
-  justify-content: center;
-  align-items: center;
+  flex-grow: 1;
   height: 36px;
 }
 
@@ -35,9 +31,11 @@
 }
 
 .header__filter-item--button {
-  height: 20px;
+  padding: 0;
+  flex-grow: 1;
+  height: 36px;
   font-size: 15px;
-  line-height: 20px;
+  line-height: 36px;
   color: $color-filterTabs-unActive;
   border: none;
   background: none;
