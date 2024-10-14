@@ -40,9 +40,10 @@
   }
 
   &__network-error {
+    position: absolute;
     position: fixed;
     bottom: 40px;
-    left: 17%;
+    margin-left: 16px;
     width: 343px;
     height: 64px;
     background-color: $error-network-background;
