@@ -1,5 +1,5 @@
 import React, { ChangeEvent } from 'react';
-import { useAppDispatch, useAppSelector } from '../../../../store/hooks';
+import { useAppDispatch, useAppSelector } from '../../../../hooks/hooks';
 import { setSortOrder, selectSortOrder } from '../Sort/sortSlice';
 import { setIsModalOpen } from '../Modal/modalSlice';
 import { useSearchParams } from 'react-router-dom';

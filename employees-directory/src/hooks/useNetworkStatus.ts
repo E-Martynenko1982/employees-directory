@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
-import { useAppDispatch } from '../../store/hooks';
-import { setOnline, setOffline } from '../../features/Connection/connectionSlice';
+import { useAppDispatch } from './hooks';
+import { setOnline, setOffline } from '../features/Connection/connectionSlice';
 
 const useNetworkStatus = () => {
   const dispatch = useAppDispatch();

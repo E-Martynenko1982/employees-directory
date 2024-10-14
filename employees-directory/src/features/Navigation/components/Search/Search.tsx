@@ -1,6 +1,6 @@
 import React, { ChangeEvent } from 'react';
 import Sort from "../Sort/Sort";
-import { useAppDispatch, useAppSelector } from '../../../../store/hooks';
+import { useAppDispatch, useAppSelector } from '../../../../hooks/hooks';
 import { setSearchQuery, selectSearchQuery } from '../Search/searchSlice';
 import { useSearchParams } from 'react-router-dom';
 import SearchIcon from "../../../../../public/img/search-icon.png";

@@ -1,5 +1,5 @@
 import React from "react";
-import { useAppDispatch, useAppSelector } from '../../../../store/hooks';
+import { useAppDispatch, useAppSelector } from '../../../../hooks/hooks';
 import { setFilterPosition, selectFilterPosition } from '../Filter/filterSlice';
 import { useSearchParams } from 'react-router-dom';
 import "./index.scss";

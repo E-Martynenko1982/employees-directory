@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { useAppDispatch, useAppSelector } from '../../store/hooks';
+import { useAppDispatch, useAppSelector } from '../../hooks/hooks';
 import { fetchEmployees } from './employeesSlice';
 import { selectFilteredEmployees } from './employeesSelectors';
 import EmployeeSkeleton from './EmployeeSkeleton/EmployeeSkeleton';
