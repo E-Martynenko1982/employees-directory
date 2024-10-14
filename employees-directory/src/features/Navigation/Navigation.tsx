@@ -2,9 +2,9 @@ import React from 'react';
 import { useLocation } from 'react-router-dom';
 import Filter from './components/Filter/Filter';
 import Search from './components/Search/Search';
-import SignalIcon from "../../public/img/signal-icon.png";
-import WiFiIcon from "../../public/img/Wi-Fi.png";
-import BatteryIcon from "../../public/img/battery.png";
+import SignalIcon from "../../../public/img/signal-icon.png";
+import WiFiIcon from "../../../public/img/Wi-Fi.png";
+import BatteryIcon from "../../../public/img/battery.png";
 import { useAppSelector } from '../../store/hooks';
 import './index.scss';
 

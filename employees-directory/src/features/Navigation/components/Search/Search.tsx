@@ -3,7 +3,7 @@ import Sort from "../Sort/Sort";
 import { useAppDispatch, useAppSelector } from '../../../../store/hooks';
 import { setSearchQuery, selectSearchQuery } from '../Search/searchSlice';
 import { useSearchParams } from 'react-router-dom';
-import SearchIcon from "../../../../public/img/search-icon.png";
+import SearchIcon from "../../../../../public/img/search-icon.png";
 import "./index.scss";
 
 const Search: React.FC = () => {

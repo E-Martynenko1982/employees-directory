@@ -2,9 +2,9 @@ import React, { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { fetchDataUserById, User } from '../../gateway/gateway';
 import { calculateAge } from '../../utils/utils';
-import starIcon from "../../public/img/star.svg";
-import phoneIcon from "../../public/img/phone-icon.svg";
-import ArrowIcon from "../../public/img/left-arrow.svg";
+import starIcon from "../../../public/img/star.svg";
+import phoneIcon from "../../../public/img/phone-icon.svg";
+import ArrowIcon from "../../../public/img/left-arrow.svg";
 import "./index.scss";
 
 const EmployeesProfile: React.FC = () => {

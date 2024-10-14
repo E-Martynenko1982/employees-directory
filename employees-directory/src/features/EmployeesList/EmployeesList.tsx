@@ -4,7 +4,7 @@ import { useAppDispatch, useAppSelector } from '../../store/hooks';
 import { fetchEmployees } from './employeesSlice';
 import { selectFilteredEmployees } from './employeesSelectors';
 import EmployeeSkeleton from './EmployeeSkeleton/EmployeeSkeleton';
-import SearchErrorIcon from "../../public/img/left-pointing-magnifying-glass_1f50d.png";
+import SearchErrorIcon from "../../../public/img/left-pointing-magnifying-glass_1f50d.png";
 import './index.scss';
 
 const EmployeesList: React.FC = () => {
