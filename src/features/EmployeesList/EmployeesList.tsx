@@ -1,10 +1,10 @@
 import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from '../../hooks/hooks';
-import { fetchEmployees } from './employeesSlice';
-import { selectFilteredEmployees } from './employeesSelectors';
+import { fetchEmployees } from '../../redux/employeesSlice';
+import { selectFilteredEmployees } from '../../redux/employeesSelectors';
 import EmployeeSkeleton from './EmployeeSkeleton/EmployeeSkeleton';
-import SearchErrorIcon from "../../../public/img/left-pointing-magnifying-glass_1f50d.png";
+//import SearchErrorIcon from "../../../public/img/left-pointing-magnifying-glass_1f50d.png";
 import './index.scss';
 
 const EmployeesList: React.FC = () => {
@@ -39,7 +39,7 @@ const EmployeesList: React.FC = () => {
       {status === 'succeeded' && filteredEmployees.length === 0 ? (
         <div className="search-error">
           <img
-            src={SearchErrorIcon}
+            src="/img/left-pointing-magnifying-glass_1f50d.png"
             alt="search-img"
           />
           <div className="search-titles">

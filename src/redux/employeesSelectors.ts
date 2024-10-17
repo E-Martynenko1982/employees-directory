@@ -1,6 +1,6 @@
 import { createSelector } from '@reduxjs/toolkit';
-import { RootState } from '../../store/store';
-import { getDayOfYear } from '../../utils/utils';
+import { RootState } from './store';
+import { getDayOfYear } from '../utils/utils';
 
 export const selectEmployeesData = (state: RootState) => state.employees.data;
 export const selectFilterPosition = (state: RootState) => state.filter.position;

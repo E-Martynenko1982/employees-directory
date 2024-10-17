@@ -1,5 +1,5 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
-import { fetchDataUsers, User } from '../../gateway/gateway';
+import { fetchDataUsers, User } from '../gateway/gateway';
 
 interface EmployeesState {
   data: User[];

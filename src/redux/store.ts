@@ -4,8 +4,8 @@ import filterReducer from '../features/Navigation/components/Filter/filterSlice'
 import searchReducer from '../features/Navigation/components/Search/searchSlice';
 import sortReducer from '../features/Navigation/components/Sort/sortSlice';
 import modalReducer from '../features/Navigation/components/Modal/modalSlice';
-import employeesReducer from '../features/EmployeesList/employeesSlice';
-import connectionReducer from '../features/Connection/connectionSlice';
+import employeesReducer from './employeesSlice';
+import connectionReducer from './connectionSlice';
 
 import { persistStore, persistReducer } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
