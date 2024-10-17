@@ -1,6 +1,5 @@
 import React from 'react';
 import Modal from '../Modal/Modal';
-import burgerIcon from "../../../../../public/img/burger.svg";
 import { useAppDispatch, useAppSelector } from '../../../../hooks/hooks';
 import { toggleModal } from '../Modal/modalSlice';
 import "./index.scss";
@@ -16,7 +15,7 @@ const Sort: React.FC = () => {
   return (
     <div className="header__sort-burger">
       <button className="header__sort-burger-button" onClick={handleButtonClick}>
-        <img src={burgerIcon} alt="burger-icon" className="header__sort-burger-icon" />
+        <img src="/images/burger.svg" alt="burger-icon" className="header__sort-burger-icon" />
       </button>
       {isModalOpen && <Modal />}
     </div>

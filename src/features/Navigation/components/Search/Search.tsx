@@ -3,7 +3,7 @@ import Sort from "../Sort/Sort";
 import { useAppDispatch, useAppSelector } from '../../../../hooks/hooks';
 import { setSearchQuery, selectSearchQuery } from '../Search/searchSlice';
 import { useSearchParams } from 'react-router-dom';
-import SearchIcon from "../../../../../public/img/search-icon.png";
+
 import "./index.scss";
 
 const Search: React.FC = () => {
@@ -26,7 +26,7 @@ const Search: React.FC = () => {
   return (
     <div className="header__search">
       <div className="header__search-container">
-        <img src={SearchIcon} alt="SearchIcon" className='header__search-icon' />
+        <img src="images/search-icon.png" alt="SearchIcon" className='header__search-icon' />
         <input
           type="text"
           className="header__search-input"

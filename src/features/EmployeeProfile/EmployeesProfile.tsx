@@ -2,9 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { fetchDataUserById, User } from '../../gateway/gateway';
 import { calculateAge } from '../../utils/utils';
-import starIcon from "../../../public/img/star.svg";
-import phoneIcon from "../../../public/img/phone-icon.svg";
-import ArrowIcon from "../../../public/img/left-arrow.svg";
+
 import "./index.scss";
 
 const EmployeesProfile: React.FC = () => {
@@ -39,7 +37,7 @@ const EmployeesProfile: React.FC = () => {
       <div className="profile__title">
         <div className="profile__title-content">
           <div className="profile__arrow" onClick={handleBackClick}>
-            <img className="profile__arrow-img" src={ArrowIcon} alt="arrow" />
+            <img className="profile__arrow-img" src="/images/left-arrow.svg" alt="arrow" />
           </div>
           <img className="profile__title-avatar" src={user.avatar} alt="avatar" />
           <div className="profile__name-container">
@@ -56,13 +54,13 @@ const EmployeesProfile: React.FC = () => {
       <div className="profile__info">
         <div className="profile__info-date">
           <span className="profile__info-bd">
-            <img src={starIcon} alt="star-icon" className='profile__icon' />
+            <img src="/images/star.svg" alt="star-icon" className='profile__icon' />
             {new Date(user.birthDate).toLocaleDateString()}
           </span>
           <span className="profile__info-age">{calculateAge(user.birthDate)} лет</span>
         </div>
         <span className="profile__info-phone">
-          <img src={phoneIcon} alt="phone-icon" className="profile__icon" />
+          <img src="/images/phone-icon.svg" alt="phone-icon" className="profile__icon" />
           {user.phone}</span>
       </div>
       <div className="profile__collapse-line"></div>

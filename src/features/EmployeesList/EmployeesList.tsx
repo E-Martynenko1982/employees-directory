@@ -4,7 +4,6 @@ import { useAppDispatch, useAppSelector } from '../../hooks/hooks';
 import { fetchEmployees } from '../../redux/employeesSlice';
 import { selectFilteredEmployees } from '../../redux/employeesSelectors';
 import EmployeeSkeleton from './EmployeeSkeleton/EmployeeSkeleton';
-//import SearchErrorIcon from "../../../public/img/left-pointing-magnifying-glass_1f50d.png";
 import './index.scss';
 
 const EmployeesList: React.FC = () => {
