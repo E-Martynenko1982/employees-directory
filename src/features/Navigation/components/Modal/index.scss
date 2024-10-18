@@ -35,6 +35,10 @@
     height: 2px;
     background-color: $color-text-input-search;
     border-radius: 3px;
+
+    @include desktop {
+      display: none;
+    }
   }
 
   &__sort-container-title-name {
@@ -72,6 +76,7 @@
     width: 20px;
     height: 20px;
     outline: none;
+    cursor: pointer;
   }
 
   &__sort-container-list-item--label {
@@ -79,6 +84,7 @@
     font-weight: $medium;
     line-height: 20px;
     color: $color-filterTabs-active;
+    cursor: pointer;
   }
 }
 

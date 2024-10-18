@@ -1,6 +1,6 @@
 # Project: Employees directory
 
-### [Site link](https://670a3e67e05446f96cc30dcf--stalwart-concha-5ac09b.netlify.app//)
+### [Site link](https://stalwart-concha-5ac09b.netlify.app/)
 
 Layout support desktop (up-to-1280) version
 
