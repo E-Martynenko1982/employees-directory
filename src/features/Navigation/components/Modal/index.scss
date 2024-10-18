@@ -3,10 +3,11 @@
 
 .modal {
   position: fixed;
+
   bottom: 0;
   left: 50%;
   transform: translateX(-50%);
-  z-index: 2;
+
   width: 359px;
   height: 218px;
   background-color: $color-filterTabs-unActive;
@@ -19,6 +20,7 @@
     width: 373px;
     height: 192px;
     border-radius: 10px;
+    background-color: $page-background-color;
   }
 
   &__sort-container {
@@ -29,6 +31,13 @@
     height: 184px;
   }
 
+  &__sort-container-title {
+    @include desktop {
+      height: 24px;
+      margin-right: 23px;
+      margin-left: 23px;
+    }
+  }
   &__sort-container-title-line {
     margin: 12px auto 0;
     width: 56px;
@@ -41,6 +50,14 @@
     }
   }
 
+  &__sort-container-title-cancel {
+    display: none;
+
+    @include desktop {
+      display: block;
+    }
+  }
+
   &__sort-container-title-name {
     margin-top: 12px;
     height: 24px;
@@ -48,6 +65,22 @@
     font-weight: $semi-bold;
     line-height: 24px;
     color: $main-text-color;
+
+    @include desktop {
+      margin-left: 23px;
+      display: flex;
+      justify-content: flex-end;
+    }
+  }
+
+  &__sort-container-title-name span {
+    @include desktop {
+      margin-right: 79px;
+      color: $main-text-color;
+      font-size: 20px;
+      font-weight: $semi-bold;
+      line-height: 24px;
+    }
   }
 
   &__sort-container-list {

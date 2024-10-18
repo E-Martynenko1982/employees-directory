@@ -1,7 +1,7 @@
 import React, { ChangeEvent } from 'react';
 import { useAppDispatch, useAppSelector } from '../../../../hooks/hooks';
 import { setSortOrder, selectSortOrder } from '../Sort/sortSlice';
-import { setIsModalOpen } from '../Modal/modalSlice';
+import { setIsModalOpen } from './modalSlice';
 import { useSearchParams } from 'react-router-dom';
 import "./index.scss";
 
@@ -19,14 +19,21 @@ const Modal: React.FC = () => {
     dispatch(setIsModalOpen(false));
   };
 
+  const handleCloseModal = () => {
+    dispatch(setIsModalOpen(false));
+  };
+
   return (
     <div className="modal">
       <div className="modal__sort-container">
         <div className="modal__sort-container-title">
           <div className="modal__sort-container-title-line"></div>
           <div className="modal__sort-container-title-name">
-            Сортировка
+            <span>Сортировка</span>  <button className='modal__sort-container-title-cancel' onClick={handleCloseModal}>
+              <img className="modal__sort-container-title-cancel-img" src="/public/images/cancel_16.png" alt="cancel-img" />
+            </button>
           </div>
+
         </div>
         <ul className="modal__sort-container-list">
           <li className="modal__sort-container-list-item">

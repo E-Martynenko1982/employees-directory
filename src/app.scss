@@ -2,13 +2,21 @@
 @import "./styles/breackpoints.scss";
 
 .page {
+  position: relative;
   margin: 0 auto;
   width: 375px;
   min-height: 100vh;
-  background: $page-background-color;
+  background-color: $page-background-color;
   overflow-x: hidden;
 
   @include desktop {
     width: 1280px;
+  }
+}
+
+.page--modal-open {
+  @include desktop {
+    background-color: $main-text-color;
+    opacity: 16%;
   }
 }
