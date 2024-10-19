@@ -1,4 +1,3 @@
-// store.ts
 import { configureStore, combineReducers } from '@reduxjs/toolkit';
 import filterReducer from '../features/Navigation/components/Filter/filterSlice';
 import searchReducer from '../features/Navigation/components/Search/searchSlice';
@@ -16,7 +15,7 @@ const rootReducer = combineReducers({
   sort: sortReducer,
   modal: modalReducer,
   employees: employeesReducer,
-  connection: connectionReducer, // Добавили connectionReducer
+  connection: connectionReducer,
 });
 
 const persistConfig = {

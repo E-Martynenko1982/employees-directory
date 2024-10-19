@@ -29,7 +29,8 @@ const Modal: React.FC = () => {
         <div className="modal__sort-container-title">
           <div className="modal__sort-container-title-line"></div>
           <div className="modal__sort-container-title-name">
-            <span>Сортировка</span>  <button className='modal__sort-container-title-cancel' onClick={handleCloseModal}>
+            <span>Сортировка</span>
+            <button className='modal__sort-container-title-cancel' onClick={handleCloseModal}>
               <img className="modal__sort-container-title-cancel-img" src="/public/images/cancel_16.png" alt="cancel-img" />
             </button>
           </div>

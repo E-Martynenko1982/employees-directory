@@ -4,9 +4,12 @@
 .main {
   width: 375px;
   background-color: inherit;
+  overflow-y: auto;
 
   @include desktop {
     width: 1280px;
+    height: auto;
+    overflow-y: auto;
   }
 
   .employee-list {

@@ -1,4 +1,5 @@
 @import "../../../../styles/variables.scss";
+@import "../../../../styles/breackpoints.scss";
 
 .header__search {
   position: relative;
@@ -13,17 +14,25 @@
     margin-left: 12px;
     display: flex;
     align-items: center;
+
+    @include desktop {
+      width: 100%;
+    }
   }
 
   input.header__search-input {
     padding: 2px 0;
     display: flex;
     align-items: center;
-    height: 100%;
+    height: 40px;
     margin-left: 8px;
     background-color: $background-input;
     border: none;
     outline: none;
+
+    @include desktop {
+      width: 100%;
+    }
   }
 
   .header__search-input::placeholder {

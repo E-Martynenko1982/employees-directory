@@ -1,28 +1,16 @@
 import React, { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import { fetchDataUserById, User } from '../../gateway/gateway';
+import { useAppSelector } from '../../hooks/hooks';
+import { selectEmployeesData } from '../../redux/employeesSelectors';
 import { calculateAge } from '../../utils/utils';
-
 import "./index.scss";
 
 const EmployeesProfile: React.FC = () => {
   const { id } = useParams<{ id: string }>();
   const navigate = useNavigate();
-  const [user, setUser] = useState<User | null>(null);
+  const employees = useAppSelector(selectEmployeesData);
 
-  useEffect(() => {
-    const getUser = async () => {
-      try {
-        if (id) {
-          const userData = await fetchDataUserById(id);
-          setUser(userData);
-        }
-      } catch (error) {
-        console.error('Ошибка при получении данных сотрудника:', error);
-      }
-    };
-    getUser();
-  }, [id]);
+  const user = employees.find(e => e.id === id);
 
   const handleBackClick = () => {
     navigate(-1);

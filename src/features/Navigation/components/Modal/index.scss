@@ -36,6 +36,7 @@
       height: 24px;
       margin-right: 23px;
       margin-left: 23px;
+      margin-top: 24px;
     }
   }
   &__sort-container-title-line {
@@ -54,7 +55,13 @@
     display: none;
 
     @include desktop {
-      display: block;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 24px;
+      height: 24px;
+      border: none;
+      border-radius: 50%;
     }
   }
 
@@ -67,6 +74,7 @@
     color: $main-text-color;
 
     @include desktop {
+      margin-top: 0;
       margin-left: 23px;
       display: flex;
       justify-content: flex-end;
