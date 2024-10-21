@@ -3,13 +3,23 @@ import Navigation from "./features/Navigation/Navigation";
 import EmployeesList from "./features/EmployeesList/EmployeesList";
 import EmployeesProfile from "./features/EmployeeProfile/EmployeesProfile";
 import useNetworkStatus from "./hooks/useNetworkStatus";
-import { useAppSelector } from './hooks/hooks';
+import { useAppDispatch, useAppSelector } from './hooks/hooks';
 import Modal from "./features/Navigation/components/Modal/Modal";
 import "./app.scss";
+import { useEffect } from "react";
+import { fetchEmployees } from "./redux/employeesSlice";
 
 const App: React.FC = () => {
   useNetworkStatus();
   const isModalOpen = useAppSelector((state) => state.modal.isOpen);
+  const employeesLoaded = useAppSelector(state => state.employees.loaded);
+  const dispatch = useAppDispatch();
+
+  useEffect(() => {
+    if (!employeesLoaded) {
+      dispatch(fetchEmployees());
+    }
+  }, [dispatch, employeesLoaded]);
 
   return (
     <Router>
@@ -26,3 +36,4 @@ const App: React.FC = () => {
 }
 
 export default App;
+
