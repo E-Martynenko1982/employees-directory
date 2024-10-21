@@ -41,7 +41,11 @@ const EmployeesList: React.FC = () => {
       <div className="employees-list">
         {sortedYears.map(year => (
           <div key={year}>
-            <div className="employees-list__year">{year}</div>
+            <div className="employees-list__year">
+              <div className="employees-list__line"></div>
+              <span className='employees-list__number'>{year}</span>
+              <div className="employees-list__line"></div>
+            </div>
             {employeesByYear[year].map(employee => (
               <EmployeeCard key={employee.id} employee={employee} />
             ))}

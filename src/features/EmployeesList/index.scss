@@ -8,5 +8,37 @@
   margin-top: 16px;
   margin-left: 16px;
   margin-right: 16px;
-  height: calc(100vh - 140px);
+  min-height: calc(100vh - 140px);
+
+  &__year {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 68px;
+
+    @include desktop {
+      margin-left: 24px;
+      width: 1200px;
+    }
+  }
+
+  &__number {
+    margin-left: 12px;
+    margin-right: 12px;
+    font-size: 15px;
+    font-weight: $medium;
+    line-height: 20px;
+    color: $color-text-input-search;
+  }
+
+  &__line {
+    width: 72px;
+    height: 2px;
+    border: none;
+    background-color: $color-text-input-search;
+
+    @include desktop {
+      width: 520px;
+    }
+  }
 }
