@@ -1,4 +1,3 @@
-// src/features/Navigation/components/Modal/Modal.tsx
 import React, { ChangeEvent } from "react";
 import { useAppDispatch, useAppSelector } from '../../../../hooks/hooks';
 import { setSortOrder, selectSortOrder } from '../../../../redux/sortSlice';

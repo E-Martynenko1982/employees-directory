@@ -1,5 +1,4 @@
 const SERVER_URL = 'https://66a0f8b17053166bcabd894e.mockapi.io/api/workers';
-
 interface User {
   avatar: string;
   birthDate: number;

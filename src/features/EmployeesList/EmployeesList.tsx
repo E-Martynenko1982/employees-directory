@@ -1,4 +1,3 @@
-// src/features/EmployeesList/EmployeesList.tsx
 import React, { useMemo } from 'react';
 import { useAppSelector } from '../../hooks/hooks';
 import { employeesSelectors } from '../../redux/employeesSelectors';
