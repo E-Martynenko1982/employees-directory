@@ -7,7 +7,7 @@ export const selectFilterPosition = (state: RootState) => state.filter.position;
 export const selectSearchQuery = (state: RootState) => state.search.query;
 export const selectSortOrder = (state: RootState) => state.sort.order;
 
-export const selectFilteredEmployees = createSelector(
+export const employeesSelectors = createSelector(
   [selectEmployeesData, selectFilterPosition, selectSearchQuery, selectSortOrder],
   (employees, filterPosition, searchQuery, sortOrder) => {
     let filteredEmployees = employees.slice();

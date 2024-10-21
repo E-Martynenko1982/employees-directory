@@ -1,7 +1,7 @@
 import { configureStore, combineReducers } from '@reduxjs/toolkit';
-import filterReducer from '../features/Navigation/components/Filter/filterSlice';
-import searchReducer from '../features/Navigation/components/Search/searchSlice';
-import sortReducer from '../features/Navigation/components/Sort/sortSlice';
+import filterReducer from './filterSlice';
+import searchReducer from './searchSlice';
+import sortReducer from './sortSlice';
 import modalReducer from '../features/Navigation/components/Modal/modalSlice';
 import employeesReducer from './employeesSlice';
 import connectionReducer from './connectionSlice';

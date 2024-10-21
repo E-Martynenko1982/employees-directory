@@ -1,7 +1,7 @@
 import React, { ChangeEvent } from 'react';
 import Sort from "../Sort/Sort";
 import { useAppDispatch, useAppSelector } from '../../../../hooks/hooks';
-import { setSearchQuery, selectSearchQuery } from '../Search/searchSlice';
+import { setSearchQuery, selectSearchQuery } from '../../../../redux/searchSlice';
 import { useSearchParams } from 'react-router-dom';
 
 import "./index.scss";

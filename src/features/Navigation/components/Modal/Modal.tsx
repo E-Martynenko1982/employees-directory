@@ -1,6 +1,6 @@
 import React, { ChangeEvent } from 'react';
 import { useAppDispatch, useAppSelector } from '../../../../hooks/hooks';
-import { setSortOrder, selectSortOrder } from '../Sort/sortSlice';
+import { setSortOrder, selectSortOrder } from '../../../../redux/sortSlice';
 import { setIsModalOpen } from './modalSlice';
 import { useSearchParams } from 'react-router-dom';
 import "./index.scss";

@@ -1,6 +1,6 @@
 import React from "react";
 import { useAppDispatch, useAppSelector } from '../../../../hooks/hooks';
-import { setFilterPosition, selectFilterPosition } from '../Filter/filterSlice';
+import { setFilterPosition, selectFilterPosition } from '../../../../redux/filterSlice';
 import { useSearchParams } from 'react-router-dom';
 import "./index.scss";
 

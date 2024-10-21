@@ -1,0 +1,33 @@
+@import "../../styles/variables.scss";
+@import "../../styles/breackpoints.scss";
+
+.error {
+  margin-top: 80px;
+  text-align: center;
+
+  @include desktop {
+    margin-top: 149px;
+  }
+
+  &__title {
+    margin-top: 8px;
+    margin-bottom: 0;
+    font-size: 17px;
+    font-weight: $semi-bold;
+    line-height: 22px;
+  }
+
+  &__message {
+    margin-top: 12px;
+    margin-bottom: 0;
+    font-size: 16px;
+    font-weight: $regular;
+    line-height: 20px;
+    color: $color-filterTabs-unActive;
+  }
+
+  & img {
+    width: 56px;
+    height: 56px;
+  }
+}

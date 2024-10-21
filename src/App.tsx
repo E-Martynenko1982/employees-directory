@@ -2,12 +2,14 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Navigation from "./features/Navigation/Navigation";
 import EmployeesList from "./features/EmployeesList/EmployeesList";
 import EmployeesProfile from "./features/EmployeeProfile/EmployeesProfile";
+import Error from "./features/Error";
 import useNetworkStatus from "./hooks/useNetworkStatus";
 import { useAppDispatch, useAppSelector } from './hooks/hooks';
 import Modal from "./features/Navigation/components/Modal/Modal";
-import "./app.scss";
 import { useEffect } from "react";
 import { fetchEmployees } from "./redux/employeesSlice";
+
+import "./app.scss";
 
 const App: React.FC = () => {
   useNetworkStatus();
@@ -28,11 +30,12 @@ const App: React.FC = () => {
         <Routes>
           <Route path="/" element={<EmployeesList />} />
           <Route path="/employees/:id" element={<EmployeesProfile />} />
+          <Route path="*" element={<Error type={"general"} />} />
         </Routes>
       </div>
       {isModalOpen && <Modal />}
     </Router>
-  );
+  )
 }
 
 export default App;
