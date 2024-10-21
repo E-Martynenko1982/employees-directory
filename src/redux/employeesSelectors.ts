@@ -1,6 +1,6 @@
+// src/redux/employeesSelectors.ts
 import { createSelector } from '@reduxjs/toolkit';
 import { RootState } from './store';
-import { getDayOfYear } from '../utils/utils';
 
 export const selectEmployeesData = (state: RootState) => state.employees.data;
 export const selectFilterPosition = (state: RootState) => state.filter.position;
@@ -33,13 +33,13 @@ export const employeesSelectors = createSelector(
       if (sortOrder === 'alphabetical') {
         return a.name.localeCompare(b.name);
       } else if (sortOrder === 'birthday') {
-        const aBirthday = new Date(a.birthDate);
-        const bBirthday = new Date(b.birthDate);
-
-        const aDayOfYear = getDayOfYear(aBirthday);
-        const bDayOfYear = getDayOfYear(bBirthday);
-
-        return aDayOfYear - bDayOfYear;
+        const aBirthDate = new Date(a.birthDate);
+        const bBirthDate = new Date(b.birthDate);
+        const yearDiff = aBirthDate.getFullYear() - bBirthDate.getFullYear();
+        if (yearDiff !== 0) {
+          return yearDiff;
+        }
+        return a.name.localeCompare(b.name);
       } else {
         return 0;
       }

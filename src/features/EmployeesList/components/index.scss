@@ -1,0 +1,49 @@
+@import "../../../styles/breackpoints.scss";
+@import "../../../styles/variables.scss";
+
+.employee-card {
+  text-decoration: none;
+
+  &__title {
+    display: flex;
+  }
+
+  &__avatar {
+    height: 72px;
+    width: 72px;
+    border-radius: 50%;
+  }
+
+  &__name-container {
+    margin-left: 16px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 60px;
+  }
+
+  &__title-box {
+  }
+
+  &__name {
+    font-size: 16px;
+    font-weight: $medium;
+    line-height: 20px;
+    color: $main-text-color;
+  }
+
+  &__tag {
+    margin-left: 4px;
+    font-size: 14px;
+    font-weight: $medium;
+    line-height: 18px;
+    color: $color-filterTabs-unActive;
+  }
+
+  &__position {
+    font-size: 13px;
+    font-weight: $regular;
+    line-height: 16px;
+    color: $employee-status-color;
+  }
+}
