@@ -1,6 +1,6 @@
 import React from 'react';
 import { useAppDispatch } from '../../../../hooks/hooks';
-import { toggleModal } from '../Modal/modalSlice';
+import { toggleModal } from '../../../../redux/modalSlice';
 import "./index.scss";
 
 const Sort: React.FC = () => {

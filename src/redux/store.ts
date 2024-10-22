@@ -2,7 +2,7 @@ import { configureStore, combineReducers } from '@reduxjs/toolkit';
 import filterReducer from './filterSlice';
 import searchReducer from './searchSlice';
 import sortReducer from './sortSlice';
-import modalReducer from '../features/Navigation/components/Modal/modalSlice';
+import modalReducer from './modalSlice';
 import employeesReducer from './employeesSlice';
 import connectionReducer from './connectionSlice';
 
