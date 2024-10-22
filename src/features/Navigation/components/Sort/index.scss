@@ -1,4 +1,5 @@
 @import "../../../../styles/variables.scss";
+
 .header__sort-burger {
   display: flex;
   align-items: center;
@@ -15,10 +16,9 @@
 }
 
 .header__sort-burger-icon {
-  fill: currentColor;
-  transition: fill 0.3s;
+  transition: filter 0.3s;
 }
 
-.header__sort-burger-icon:hover {
-  fill: $active-burger-color;
+.header__sort-burger-button:hover .header__sort-burger-icon {
+  filter: invert(31%) sepia(94%) saturate(6255%) hue-rotate(181deg) brightness(95%) contrast(112%);
 }
