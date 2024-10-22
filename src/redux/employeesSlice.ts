@@ -1,5 +1,6 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import { fetchDataUsers, User } from '../gateway/gateway';
+import { RootState } from './store';
 
 interface EmployeesState {
   loaded: boolean;
@@ -44,3 +45,4 @@ const employeesSlice = createSlice({
 });
 
 export default employeesSlice.reducer;
+export const selectEmployeesData = (state: RootState): User[] => state.employees.data;

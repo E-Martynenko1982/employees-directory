@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { useAppSelector, useAppDispatch } from '../../hooks/hooks';
-import { selectEmployeesData } from '../../redux/employeesSelectors';
+import { employeesSelectors } from '../../redux/employeesSelectors';
 import { fetchEmployees } from '../../redux/employeesSlice';
 import { calculateAge } from '../../utils/utils';
 import Error from '../Error';
@@ -11,7 +11,7 @@ const EmployeesProfile: React.FC = () => {
   const { id } = useParams<{ id: string }>();
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
-  const employees = useAppSelector(selectEmployeesData);
+  const employees = useAppSelector(employeesSelectors);
   const status = useAppSelector(state => state.employees.status);
 
   useEffect(() => {

@@ -9,10 +9,10 @@ const Filter: React.FC = () => {
   const selectedFilter = useAppSelector(selectFilterPosition);
   const [searchParams, setSearchParams] = useSearchParams();
 
-  const handleFilterClick = (filter: string) => {
-    dispatch(setFilterPosition(filter));
+  const handleFilterClick = (position: string) => {
+    dispatch(setFilterPosition(position));
 
-    searchParams.set('filter', filter);
+    searchParams.set('position', position);
     setSearchParams(searchParams);
   };
 

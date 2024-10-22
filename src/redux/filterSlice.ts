@@ -5,13 +5,13 @@ interface FilterState {
   position: string;
 }
 
-const getFilterFromURL = (): string => {
+const getPositionFromURL = (): string => {
   const params = new URLSearchParams(window.location.search);
-  return params.get('filter') || 'Все';
+  return params.get('position') || 'Все';
 };
 
 const initialState: FilterState = {
-  position: getFilterFromURL(),
+  position: getPositionFromURL(),
 };
 
 const filterSlice = createSlice({

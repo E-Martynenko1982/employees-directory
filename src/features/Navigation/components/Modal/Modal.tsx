@@ -2,15 +2,20 @@ import React, { ChangeEvent } from "react";
 import { useAppDispatch, useAppSelector } from '../../../../hooks/hooks';
 import { setSortOrder, selectSortOrder } from '../../../../redux/sortSlice';
 import { setIsModalOpen } from '../../../../redux/modalSlice';
+import { useSearchParams } from 'react-router-dom';
 import "./index.scss";
 
 const Modal: React.FC = () => {
   const dispatch = useAppDispatch();
   const currentSortOrder = useAppSelector(selectSortOrder);
+  const [searchParams, setSearchParams] = useSearchParams();
 
   const handleSortChange = (event: ChangeEvent<HTMLInputElement>) => {
     const sortOrder = event.target.value;
     dispatch(setSortOrder(sortOrder));
+
+    searchParams.set('sortBy', sortOrder); // Изменено 'sort' на 'sortBy'
+    setSearchParams(searchParams);
     dispatch(setIsModalOpen(false));
   };
 
@@ -26,7 +31,7 @@ const Modal: React.FC = () => {
           <div className="modal__sort-container-title-name">
             <span>Сортировка</span>
             <button className='modal__sort-container-title-cancel' onClick={handleCloseModal}>
-              <img className="modal__sort-container-title-cancel-img" src="/images/cancel_16.png" alt="cancel-img" />
+              <img className="modal__sort-container-title-cancel-img" src="/public/images/cancel_16.png" alt="cancel-img" />
             </button>
           </div>
         </div>
@@ -71,4 +76,3 @@ const Modal: React.FC = () => {
 };
 
 export default Modal;
-

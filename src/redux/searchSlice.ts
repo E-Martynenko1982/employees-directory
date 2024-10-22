@@ -7,7 +7,7 @@ interface SearchState {
 
 const getSearchFromURL = (): string => {
   const params = new URLSearchParams(window.location.search);
-  return params.get('search') || '';
+  return params.get('searchText') || '';
 };
 
 const initialState: SearchState = {

@@ -1,14 +1,13 @@
 import { createSelector } from '@reduxjs/toolkit';
-import { RootState } from './store';
-
-export const selectEmployeesData = (state: RootState) => state.employees.data;
-export const selectFilterPosition = (state: RootState) => state.filter.position;
-export const selectSearchQuery = (state: RootState) => state.search.query;
-export const selectSortOrder = (state: RootState) => state.sort.order;
+import { User } from '../gateway/gateway';
+import { selectEmployeesData } from './employeesSlice';
+import { selectFilterPosition } from './filterSlice';
+import { selectSearchQuery } from './searchSlice';
+import { selectSortOrder } from './sortSlice';
 
 export const employeesSelectors = createSelector(
   [selectEmployeesData, selectFilterPosition, selectSearchQuery, selectSortOrder],
-  (employees, filterPosition, searchQuery, sortOrder) => {
+  (employees: User[], filterPosition: string, searchQuery: string, sortOrder: string): User[] => {
     let filteredEmployees = employees.slice();
 
     if (filterPosition !== 'Все') {
@@ -32,11 +31,11 @@ export const employeesSelectors = createSelector(
       if (sortOrder === 'alphabetical') {
         return a.name.localeCompare(b.name);
       } else if (sortOrder === 'birthday') {
-        const aBirthDate = new Date(a.birthDate);
-        const bBirthDate = new Date(b.birthDate);
-        const yearDiff = aBirthDate.getFullYear() - bBirthDate.getFullYear();
-        if (yearDiff !== 0) {
-          return yearDiff;
+        const aBirthYear = new Date(a.birthDate).getFullYear();
+        const bBirthYear = new Date(b.birthDate).getFullYear();
+
+        if (aBirthYear !== bBirthYear) {
+          return aBirthYear - bBirthYear;
         }
         return a.name.localeCompare(b.name);
       } else {

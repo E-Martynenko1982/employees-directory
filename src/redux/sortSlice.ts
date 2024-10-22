@@ -7,7 +7,7 @@ interface SortState {
 
 const getSortFromURL = (): string => {
   const params = new URLSearchParams(window.location.search);
-  return params.get('sort') || 'alphabetical';
+  return params.get('sortBy') || 'alphabetical';
 };
 
 const initialState: SortState = {

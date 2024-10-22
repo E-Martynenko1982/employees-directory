@@ -16,9 +16,9 @@ const Search: React.FC = () => {
     dispatch(setSearchQuery(query));
 
     if (query) {
-      searchParams.set('search', query);
+      searchParams.set('searchText', query);
     } else {
-      searchParams.delete('search');
+      searchParams.delete('searchText');
     }
     setSearchParams(searchParams);
   };
