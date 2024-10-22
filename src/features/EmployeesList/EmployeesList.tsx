@@ -31,7 +31,7 @@ const EmployeesList: React.FC = () => {
   }, [filteredEmployees, sortOrder]);
 
   if (filteredEmployees.length === 0) {
-    return <Error type="employeeSearch" />;
+    return <Error type="employeesSearch" />;
   }
 
   if (sortOrder === 'birthday' && groupedEmployees) {
