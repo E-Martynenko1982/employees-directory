@@ -14,7 +14,7 @@ const Modal: React.FC = () => {
     const sortOrder = event.target.value;
     dispatch(setSortOrder(sortOrder));
 
-    searchParams.set('sortBy', sortOrder); // Изменено 'sort' на 'sortBy'
+    searchParams.set('sortBy', sortOrder);
     setSearchParams(searchParams);
     dispatch(setIsModalOpen(false));
   };
@@ -31,7 +31,7 @@ const Modal: React.FC = () => {
           <div className="modal__sort-container-title-name">
             <span>Сортировка</span>
             <button className='modal__sort-container-title-cancel' onClick={handleCloseModal}>
-              <img className="modal__sort-container-title-cancel-img" src="/public/images/cancel_16.png" alt="cancel-img" />
+              <img className="modal__sort-container-title-cancel-img" src="/images/cancel_16.png" alt="cancel-img" />
             </button>
           </div>
         </div>
