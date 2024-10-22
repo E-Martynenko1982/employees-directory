@@ -16,7 +16,7 @@
 
 .page--modal-open {
   @include desktop {
-    background-color: $main-text-color;
+    background-color: #00000080;
     opacity: 16%;
   }
 }

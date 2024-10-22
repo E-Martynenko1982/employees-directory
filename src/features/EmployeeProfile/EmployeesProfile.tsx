@@ -55,7 +55,18 @@ const EmployeesProfile: React.FC = () => {
         <div className="profile__info-date">
           <span className="profile__info-bd">
             <img src="/images/star.svg" alt="star-icon" className='profile__icon' />
-            {new Date(user.birthDate).toLocaleDateString()}
+            {(() => {
+              const date = new Date(user.birthDate);
+              const formatter = new Intl.DateTimeFormat('ru-RU', {
+                day: 'numeric',
+                month: 'long',
+                year: 'numeric',
+              });
+              const parts = formatter.formatToParts(date);
+              const filteredParts = parts.filter(part => !(part.type === 'literal' && part.value.trim() === 'г.'));
+              const formattedDate = filteredParts.map(part => part.value).join('');
+              return formattedDate;
+            })()}
           </span>
           <span className="profile__info-age">{calculateAge(user.birthDate)} лет</span>
         </div>
