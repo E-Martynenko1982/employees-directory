@@ -10,7 +10,7 @@ export const employeesSelectors = createSelector(
   (employees: User[], filterPosition: string, searchQuery: string, sortOrder: string): User[] => {
     let filteredEmployees = employees.slice();
 
-    if (filterPosition !== 'Все') {
+    if (filterPosition !== 'All') {
       filteredEmployees = filteredEmployees.filter(
         user => user.position.toLowerCase() === filterPosition.toLowerCase(),
       );

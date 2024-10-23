@@ -17,7 +17,7 @@ const Filter: React.FC = () => {
   };
 
   const filters = [
-    { label: 'Все', value: 'Все' },
+    { label: 'All', value: 'All' },
     { label: 'Designers', value: 'designer' },
     { label: 'Analysts', value: 'analyst' },
     { label: 'Managers', value: 'manager' },

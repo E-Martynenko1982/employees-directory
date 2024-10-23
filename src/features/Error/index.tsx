@@ -33,7 +33,14 @@ const Error: React.FC<ErrorProps> = ({ type }) => {
       {button && (
         <Button
           onClick={handleButtonClick}
-          className="error__back-button">
+          sx={{
+            fontFamily: "Inter, sans-serif",
+            fontSize: "16px",
+            fontWeight: "$semi-bold",
+            color: "$active-burger-color",
+            textTransform: "lowercase",
+          }}
+        >
           {button}
         </Button>
       )}

@@ -31,3 +31,11 @@
     height: 56px;
   }
 }
+
+.error__back-button {
+  font-size: 36px;
+  font-weight: $semi-bold;
+  line-height: 20px;
+  color: $active-burger-color;
+  text-transform: lowercase;
+}

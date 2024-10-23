@@ -14,20 +14,20 @@ export type ErrorMessageData = {
 const errorMessageData: ErrorMessageData = {
   general: {
     imgUrl: '/images/flying-saucer.png',
-    title: 'Какой-то сверхразум все сломал',
-    description: 'Постараемся быстро починить',
-    button: 'Попробовать снова',
+    title: 'Unexpected error occurred...',
+    description: 'Try again a bit later',
+    button: 'Reload page',
   },
   employeeSearch: {
     imgUrl: '/images/magnifying-glass.png',
-    title: 'Мы никого не нашли',
-    description: 'Попробуй скорректировать запрос',
-    button: 'Вернуться к списку',
+    title: "We didn't find anyone",
+    description: 'Try to adjust your request',
+    button: 'Back to list',
   },
   employeesSearch: {
     imgUrl: '/images/magnifying-glass.png',
-    title: 'Мы никого не нашли',
-    description: 'Попробуй скорректировать запрос',
+    title: "We didn't find anyone",
+    description: 'Try to adjust your request',
   },
 };
 

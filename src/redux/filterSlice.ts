@@ -7,7 +7,7 @@ interface FilterState {
 
 const getPositionFromURL = (): string => {
   const params = new URLSearchParams(window.location.search);
-  return params.get('position') || 'Все';
+  return params.get('position') || 'All';
 };
 
 const initialState: FilterState = {

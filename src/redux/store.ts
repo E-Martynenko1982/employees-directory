@@ -1,11 +1,10 @@
 import { configureStore, combineReducers } from '@reduxjs/toolkit';
-import filterReducer from './filterSlice';
+import filterReducer from '../redux/filterSlice';
 import searchReducer from './searchSlice';
 import sortReducer from './sortSlice';
-import modalReducer from './modalSlice';
+import modalReducer from '../redux/modalSlice';
 import employeesReducer from './employeesSlice';
 import connectionReducer from './connectionSlice';
-
 import { persistStore, persistReducer } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 
@@ -17,6 +16,8 @@ const rootReducer = combineReducers({
   employees: employeesReducer,
   connection: connectionReducer,
 });
+
+export type RootState = ReturnType<typeof rootReducer>;
 
 const persistConfig = {
   key: 'root',
@@ -30,14 +31,9 @@ export const store = configureStore({
   reducer: persistedReducer,
   middleware: getDefaultMiddleware =>
     getDefaultMiddleware({
-      serializableCheck: {
-        ignoredActions: ['persist/PERSIST', 'persist/REHYDRATE'],
-        ignoredPaths: ['_persist'],
-      },
+      serializableCheck: false,
     }),
 });
 
 export const persistor = persistStore(store);
-
-export type RootState = ReturnType<typeof store.getState>;
 export type AppDispatch = typeof store.dispatch;
