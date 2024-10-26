@@ -1,20 +1,22 @@
 import React, { useEffect } from "react";
 import { BrowserRouter as Router, Routes, Route, useLocation, matchPath } from "react-router-dom";
+import { useDispatch, useSelector } from 'react-redux';
+import type { RootState, AppDispatch } from "./redux/store";
 import Navigation from "./features/Navigation/Navigation";
 import EmployeesList from "./features/EmployeesList/EmployeesList";
 import EmployeesProfile from "./features/EmployeeProfile/EmployeesProfile";
 import Error from "./features/Error";
 import useNetworkStatus from "./hooks/useNetworkStatus";
-import { useAppDispatch, useAppSelector } from './hooks/hooks';
+
 import Modal from "./features/Navigation/components/Modal/Modal";
 import { fetchEmployees } from "./redux/employeesSlice";
 import "./app.scss";
 
 const AppContent: React.FC = () => {
   const location = useLocation();
-  const isModalOpen = useAppSelector((state) => state.modal.isOpen);
-  const employeesLoaded = useAppSelector(state => state.employees.loaded);
-  const dispatch = useAppDispatch();
+  const dispatch = useDispatch<AppDispatch>();
+  const isModalOpen = useSelector((state: RootState) => state.modal.isOpen);
+  const employeesLoaded = useSelector((state: RootState) => state.employees.loaded);
 
   useNetworkStatus();
 

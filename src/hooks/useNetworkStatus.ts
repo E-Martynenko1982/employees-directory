@@ -1,9 +1,10 @@
 import { useEffect } from 'react';
-import { useAppDispatch } from './hooks';
+import { useDispatch } from 'react-redux';
+import type { AppDispatch } from '../redux/store';
 import { setOnline, setOffline } from '../redux/connectionSlice';
 
 const useNetworkStatus = () => {
-  const dispatch = useAppDispatch();
+  const dispatch = useDispatch<AppDispatch>();
 
   useEffect(() => {
     const handleOnline = () => dispatch(setOnline());
@@ -11,6 +12,12 @@ const useNetworkStatus = () => {
 
     window.addEventListener('online', handleOnline);
     window.addEventListener('offline', handleOffline);
+
+    if (navigator.onLine) {
+      dispatch(setOnline());
+    } else {
+      dispatch(setOffline());
+    }
 
     return () => {
       window.removeEventListener('online', handleOnline);

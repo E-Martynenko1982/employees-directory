@@ -1,12 +1,13 @@
 import React from "react";
-import { useAppDispatch, useAppSelector } from '../../../../hooks/hooks';
+import { useDispatch, useSelector } from 'react-redux';
 import { setFilterPosition, selectFilterPosition } from '../../../../redux/filterSlice';
 import { useSearchParams } from 'react-router-dom';
+import type { RootState, AppDispatch } from '../../../../redux/store';
 import "./index.scss";
 
 const Filter: React.FC = () => {
-  const dispatch = useAppDispatch();
-  const selectedFilter = useAppSelector(selectFilterPosition);
+  const dispatch = useDispatch<AppDispatch>();
+  const selectedFilter = useSelector((state: RootState) => selectFilterPosition(state));
   const [searchParams, setSearchParams] = useSearchParams();
 
   const handleFilterClick = (position: string) => {

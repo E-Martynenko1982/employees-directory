@@ -1,10 +1,12 @@
 import React from 'react';
-import { useAppDispatch } from '../../../../hooks/hooks';
+import { useDispatch } from 'react-redux';
 import { toggleModal } from '../../../../redux/modalSlice';
+import type { AppDispatch } from '../../../../redux/store';
 import "./index.scss";
 
 const Sort: React.FC = () => {
-  const dispatch = useAppDispatch();
+  const dispatch = useDispatch<AppDispatch>();
+
   const handleButtonClick = () => {
     dispatch(toggleModal());
   };
@@ -19,3 +21,4 @@ const Sort: React.FC = () => {
 };
 
 export default Sort;
+

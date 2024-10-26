@@ -1,66 +1,70 @@
-import React, { useMemo } from 'react';
-import { useAppSelector } from '../../hooks/hooks';
-import { employeesSelectors } from '../../redux/employeesSelectors';
+import React from 'react';
+import { useSelector } from 'react-redux';
+import { useSearchParams } from 'react-router-dom';
+import { selectEmployeesData } from '../../redux/employeesSlice';
+import { selectFilterPosition } from '../../redux/filterSlice';
+import { selectSortOrder } from '../../redux/sortSlice';
 import EmployeeCard from './components/EmployeeCard';
 import Error from '../Error';
-import { selectSortOrder } from '../../redux/sortSlice';
-import { User } from '../../gateway/gateway';
 import './index.scss';
+import type { RootState } from '../../redux/store';
 
+import { User } from '../../gateway/gateway';
 const EmployeesList: React.FC = () => {
-  const filteredEmployees = useAppSelector(employeesSelectors);
-  const sortOrder = useAppSelector(selectSortOrder);
-  const groupedEmployees = useMemo(() => {
-    if (sortOrder !== 'birthday') {
-      return null;
-    }
+  const employees = useSelector((state: RootState) => selectEmployeesData(state));
+  const filterPosition = useSelector((state: RootState) => selectFilterPosition(state));
+  const sortOrder = useSelector((state: RootState) => selectSortOrder(state));
 
-    const employeesByYear: { [year: string]: User[] } = {};
+  const [searchParams] = useSearchParams();
 
-    filteredEmployees.forEach(employee => {
-      const birthYear = new Date(employee.birthDate).getFullYear().toString();
-      if (!employeesByYear[birthYear]) {
-        employeesByYear[birthYear] = [];
-      }
-      employeesByYear[birthYear].push(employee);
+  const searchQuery = searchParams.get('searchText') || '';
+
+  let filteredEmployees = employees.slice();
+
+  if (filterPosition !== 'All') {
+    filteredEmployees = filteredEmployees.filter(
+      (user: User) => user.position.toLowerCase() === filterPosition.toLowerCase()
+    );
+  }
+
+  if (searchQuery.trim() !== '') {
+    const query = searchQuery.trim().toLowerCase();
+    filteredEmployees = filteredEmployees.filter((user: User) => {
+      return (
+        user.name.toLowerCase().includes(query) ||
+        user.tag?.toLowerCase().includes(query) ||
+        user.email.toLowerCase().includes(query)
+      );
     });
+  }
 
-    const sortedYears = Object.keys(employeesByYear).sort((a, b) => parseInt(a) - parseInt(b));
+  filteredEmployees.sort((a: User, b: User) => {
+    if (sortOrder === 'alphabetical') {
+      return a.name.localeCompare(b.name);
+    } else if (sortOrder === 'birthday') {
+      const aBirthYear = new Date(a.birthDate).getFullYear();
+      const bBirthYear = new Date(b.birthDate).getFullYear();
 
-    return { employeesByYear, sortedYears };
-  }, [filteredEmployees, sortOrder]);
+      if (aBirthYear !== bBirthYear) {
+        return aBirthYear - bBirthYear;
+      }
+      return a.name.localeCompare(b.name);
+    } else {
+      return 0;
+    }
+  });
 
   if (filteredEmployees.length === 0) {
-    return <Error type="employeesSearch" />;
+    return <Error type="employeeSearch" />;
   }
 
-  if (sortOrder === 'birthday' && groupedEmployees) {
-    const { employeesByYear, sortedYears } = groupedEmployees;
-    return (
-      <div className="employees-list">
-        {sortedYears.map(year => (
-          <div key={year}>
-            <div className="employees-list__year">
-              <div className="employees-list__line"></div>
-              <span className='employees-list__number'>{year}</span>
-              <div className="employees-list__line"></div>
-            </div>
-            {employeesByYear[year].map(employee => (
-              <EmployeeCard key={employee.id} employee={employee} />
-            ))}
-          </div>
-        ))}
-      </div>
-    );
-  } else {
-    return (
-      <div className="employees-list">
-        {filteredEmployees.map(employee => (
-          <EmployeeCard key={employee.id} employee={employee} />
-        ))}
-      </div>
-    );
-  }
+  return (
+    <div className="employees-list">
+      {filteredEmployees.map((employee: User) => (
+        <EmployeeCard key={employee.id} employee={employee} />
+      ))}
+    </div>
+  );
 };
 
 export default EmployeesList;

@@ -1,13 +1,14 @@
 import React, { ChangeEvent } from "react";
-import { useAppDispatch, useAppSelector } from '../../../../hooks/hooks';
+import { useDispatch, useSelector } from 'react-redux';
 import { setSortOrder, selectSortOrder } from '../../../../redux/sortSlice';
 import { setIsModalOpen } from '../../../../redux/modalSlice';
 import { useSearchParams } from 'react-router-dom';
+import type { RootState, AppDispatch } from '../../../../redux/store';
 import "./index.scss";
 
 const Modal: React.FC = () => {
-  const dispatch = useAppDispatch();
-  const currentSortOrder = useAppSelector(selectSortOrder);
+  const dispatch = useDispatch<AppDispatch>();
+  const currentSortOrder = useSelector((state: RootState) => selectSortOrder(state));
   const [searchParams, setSearchParams] = useSearchParams();
 
   const handleSortChange = (event: ChangeEvent<HTMLInputElement>) => {

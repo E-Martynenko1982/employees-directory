@@ -1,19 +1,15 @@
 import React, { ChangeEvent } from 'react';
 import Sort from "../Sort/Sort";
-import { useAppDispatch, useAppSelector } from '../../../../hooks/hooks';
-import { setSearchQuery, selectSearchQuery } from '../../../../redux/searchSlice';
 import { useSearchParams } from 'react-router-dom';
-
 import "./index.scss";
 
 const Search: React.FC = () => {
-  const dispatch = useAppDispatch();
-  const searchQuery = useAppSelector(selectSearchQuery);
   const [searchParams, setSearchParams] = useSearchParams();
+
+  const searchQuery = searchParams.get('searchText') || '';
 
   const handleInputChange = (event: ChangeEvent<HTMLInputElement>) => {
     const query = event.target.value;
-    dispatch(setSearchQuery(query));
 
     if (query) {
       searchParams.set('searchText', query);
@@ -26,14 +22,14 @@ const Search: React.FC = () => {
   return (
     <div className="header__search">
       <div className="header__search-container">
-        <img src="images/search-icon.png" alt="SearchIcon" className='header__search-icon' />
+        <img src="/images/search-icon.png" alt="SearchIcon" className='header__search-icon' />
         <input
           type="text"
           className="header__search-input"
-          placeholder="Search by name, tag, email..."
+          placeholder="Поиск по имени, тегу, email..."
           value={searchQuery}
           onChange={handleInputChange}
-          name='search'
+          name='searchText'
         />
       </div>
       <Sort />

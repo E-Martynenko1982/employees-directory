@@ -1,18 +1,21 @@
 import React, { useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import { useAppSelector, useAppDispatch } from '../../hooks/hooks';
-import { employeesSelectors } from '../../redux/employeesSelectors';
+import { useDispatch, useSelector } from 'react-redux';
+import type { RootState, AppDispatch } from '../../redux/store';
+
+import { selectEmployeesData } from '../../redux/employeesSlice';
 import { fetchEmployees } from '../../redux/employeesSlice';
 import { calculateAge } from '../../utils/utils';
 import Error from '../Error';
 import "./index.scss";
+import { User } from '../../gateway/gateway'; // Import User type if needed
 
 const EmployeesProfile: React.FC = () => {
   const { id } = useParams<{ id: string }>();
   const navigate = useNavigate();
-  const dispatch = useAppDispatch();
-  const employees = useAppSelector(employeesSelectors);
-  const status = useAppSelector(state => state.employees.status);
+  const dispatch = useDispatch<AppDispatch>();
+  const employees = useSelector((state: RootState) => selectEmployeesData(state));
+  const status = useSelector((state: RootState) => state.employees.status);
 
   useEffect(() => {
     if (employees.length === 0 && status === 'idle') {
@@ -20,7 +23,7 @@ const EmployeesProfile: React.FC = () => {
     }
   }, [dispatch, employees.length, status]);
 
-  const user = employees.find(e => e.id === id);
+  const user = employees.find((e: User) => e.id === id);
 
   const handleBackClick = () => {
     navigate(-1);
@@ -31,7 +34,7 @@ const EmployeesProfile: React.FC = () => {
   }
 
   if (!user) {
-    return <Error type="employeesSearch" />;
+    return <Error type="employeeSearch" />;
   }
 
   return (
@@ -63,7 +66,9 @@ const EmployeesProfile: React.FC = () => {
                 year: 'numeric',
               });
               const parts = formatter.formatToParts(date);
-              const filteredParts = parts.filter(part => !(part.type === 'literal' && part.value.trim() === 'г.'));
+              const filteredParts = parts.filter(
+                part => !(part.type === 'literal' && part.value.trim() === 'г.')
+              );
               const formattedDate = filteredParts.map(part => part.value).join('');
               return formattedDate;
             })()}
