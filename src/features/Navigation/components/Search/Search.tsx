@@ -21,12 +21,13 @@ const Search: React.FC = () => {
 
   return (
     <div className="header__search">
+
       <div className="header__search-container">
         <img src="/images/search-icon.png" alt="SearchIcon" className='header__search-icon' />
         <input
           type="text"
           className="header__search-input"
-          placeholder="Поиск по имени, тегу, email..."
+          placeholder="Search by name, tag, email..."
           value={searchQuery}
           onChange={handleInputChange}
           name='searchText'

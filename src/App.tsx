@@ -12,8 +12,7 @@ import Modal from "./features/Navigation/components/Modal/Modal";
 import { fetchEmployees } from "./redux/employeesSlice";
 import "./app.scss";
 
-const AppContent: React.FC = () => {
-  const location = useLocation();
+export const App: React.FC = () => {
   const dispatch = useDispatch<AppDispatch>();
   const isModalOpen = useSelector((state: RootState) => state.modal.isOpen);
   const employeesLoaded = useSelector((state: RootState) => state.employees.loaded);
@@ -26,6 +25,16 @@ const AppContent: React.FC = () => {
     }
   }, [dispatch, employeesLoaded]);
 
+  return (
+    <Router>
+      <AppWithRoutes isModalOpen={isModalOpen} />
+    </Router>
+  );
+};
+
+const AppWithRoutes: React.FC<{ isModalOpen: boolean }> = ({ isModalOpen }) => {
+  const location = useLocation();
+
   const knownRoutes = ['/', '/employees/:id'];
   const isUnknownRoute = !knownRoutes.some((path) => matchPath(path, location.pathname));
 
@@ -37,16 +46,9 @@ const AppContent: React.FC = () => {
         <Route path="/employees/:id" element={<EmployeesProfile />} />
         <Route path="*" element={<Error type={"general"} />} />
       </Routes>
+
       {isModalOpen && <Modal />}
     </div>
-  );
-};
-
-const App: React.FC = () => {
-  return (
-    <Router>
-      <AppContent />
-    </Router>
   );
 };
 
