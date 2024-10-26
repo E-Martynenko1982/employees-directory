@@ -1,36 +1,32 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
-import type { RootState, AppDispatch } from '../../redux/store';
+import { useSelector } from 'react-redux';
+import type { RootState } from '../../redux/store';
 
 import { selectEmployeesData } from '../../redux/employeesSlice';
-import { fetchEmployees } from '../../redux/employeesSlice';
 import { calculateAge } from '../../utils/utils';
 import Error from '../Error';
 import "./index.scss";
-import { User } from '../../gateway/gateway'; // Import User type if needed
+import { Employee, RequestStatus } from '../../types';
 
 const EmployeesProfile: React.FC = () => {
   const { id } = useParams<{ id: string }>();
   const navigate = useNavigate();
-  const dispatch = useDispatch<AppDispatch>();
   const employees = useSelector((state: RootState) => selectEmployeesData(state));
-  const status = useSelector((state: RootState) => state.employees.status);
+  const requestStatus = useSelector((state: RootState) => state.employees.requestStatus);
 
-  useEffect(() => {
-    if (employees.length === 0 && status === 'idle') {
-      dispatch(fetchEmployees());
-    }
-  }, [dispatch, employees.length, status]);
-
-  const user = employees.find((e: User) => e.id === id);
+  const user = employees.find((e: Employee) => e.id === id);
 
   const handleBackClick = () => {
     navigate(-1);
   };
 
-  if (status === 'loading') {
+  if (requestStatus === RequestStatus.loading) {
     return <div>Загрузка...</div>;
+  }
+
+  if (requestStatus === RequestStatus.failed) {
+    return <Error type="employeeSearch" />;
   }
 
   if (!user) {

@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { User } from '../../../gateway/gateway';
+import { User } from '../../../types';
 import './index.scss';
 
 interface EmployeeCardProps {

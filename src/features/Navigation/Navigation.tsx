@@ -10,7 +10,7 @@ import './index.scss';
 const Navigation: React.FC = () => {
   const location = useLocation();
   const isEmployeesProfile = location.pathname.startsWith('/employees/');
-  const isOnline = useSelector((state: RootState) => state.connection.isOnline);
+  const isOnline = useSelector((state: RootState) => state.employees);
   const windowWidth = useWindowWidth();
 
   const isLargeScreen = windowWidth > 1279;

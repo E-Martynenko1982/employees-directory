@@ -1,78 +1,63 @@
 import React, { ChangeEvent } from "react";
-import { useDispatch, useSelector } from 'react-redux';
-import { setSortOrder, selectSortOrder } from '../../../../redux/sortSlice';
-import { setIsModalOpen } from '../../../../redux/modalSlice';
 import { useSearchParams } from 'react-router-dom';
-import type { RootState, AppDispatch } from '../../../../redux/store';
+import Dialog from '@mui/material/Dialog';
+import DialogTitle from '@mui/material/DialogTitle';
+import FormControl from '@mui/material/FormControl';
+import RadioGroup from '@mui/material/RadioGroup';
+import FormControlLabel from '@mui/material/FormControlLabel';
+import Radio from '@mui/material/Radio';
+import IconButton from '@mui/material/IconButton';
+import CloseIcon from '@mui/icons-material/Close';
 import "./index.scss";
 
-const Modal: React.FC = () => {
-  const dispatch = useDispatch<AppDispatch>();
-  const currentSortOrder = useSelector((state: RootState) => selectSortOrder(state));
+interface ModalProps {
+  isOpen: boolean;
+  onClose: () => void;
+}
+
+const Modal: React.FC<ModalProps> = ({ isOpen, onClose }) => {
   const [searchParams, setSearchParams] = useSearchParams();
+  const currentSortOrder = searchParams.get('sortBy') || 'alphabetical';
 
   const handleSortChange = (event: ChangeEvent<HTMLInputElement>) => {
     const sortOrder = event.target.value;
-    dispatch(setSortOrder(sortOrder));
 
     searchParams.set('sortBy', sortOrder);
     setSearchParams(searchParams);
-    dispatch(setIsModalOpen(false));
-  };
-
-  const handleCloseModal = () => {
-    dispatch(setIsModalOpen(false));
+    onClose();
   };
 
   return (
-    <div className="modal">
-      <div className="modal__sort-container">
-        <div className="modal__sort-container-title">
-          <div className="modal__sort-container-title-line"></div>
-          <div className="modal__sort-container-title-name">
-            <span>Сортировка</span>
-            <button className='modal__sort-container-title-cancel' onClick={handleCloseModal}>
-              <img className="modal__sort-container-title-cancel-img" src="/images/cancel_16.png" alt="cancel-img" />
-            </button>
-          </div>
-        </div>
-        <ul className="modal__sort-container-list">
-          <li className="modal__sort-container-list-item">
-            <input
-              type="radio"
-              id="alphabetical"
-              name="sort"
-              value="alphabetical"
-              checked={currentSortOrder === 'alphabetical'}
-              onChange={handleSortChange}
-            />
-            <label
-              className="modal__sort-container-list-item--label"
-              htmlFor="alphabetical"
-            >
-              По алфавиту
-            </label>
-          </li>
-          <li className="modal__sort-container-list-item">
-            <input
-              type="radio"
-              id="birthday"
-              name="sort"
-              value="birthday"
-              checked={currentSortOrder === 'birthday'}
-              onChange={handleSortChange}
-            />
-            <label
-              className="modal__sort-container-list-item--label"
-              htmlFor="birthday"
-            >
-              По дню рождения
-            </label>
-          </li>
-        </ul>
-      </div>
-      <div className="bottom-line"></div>
-    </div>
+    <Dialog open={isOpen} onClose={onClose}>
+      <DialogTitle>
+        Сортировка
+        <IconButton
+          aria-label="close"
+          onClick={onClose}
+          style={{ position: 'absolute', right: 8, top: 8 }}
+        >
+          <CloseIcon />
+        </IconButton>
+      </DialogTitle>
+      <FormControl component="fieldset" style={{ padding: '0 24px 24px' }}>
+        <RadioGroup
+          name="sort"
+          value={currentSortOrder}
+          onChange={handleSortChange}
+        >
+          <FormControlLabel
+            value="alphabetical"
+            control={<Radio />}
+            label="По алфавиту"
+          />
+          <FormControlLabel
+            value="birthday"
+            control={<Radio />}
+            label="По дню рождения"
+          />
+        </RadioGroup>
+      </FormControl>
+    </Dialog>
   );
 };
 

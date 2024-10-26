@@ -1,18 +1,12 @@
 import React from "react";
-import { useDispatch, useSelector } from 'react-redux';
-import { setFilterPosition, selectFilterPosition } from '../../../../redux/filterSlice';
 import { useSearchParams } from 'react-router-dom';
-import type { RootState, AppDispatch } from '../../../../redux/store';
 import "./index.scss";
 
 const Filter: React.FC = () => {
-  const dispatch = useDispatch<AppDispatch>();
-  const selectedFilter = useSelector((state: RootState) => selectFilterPosition(state));
   const [searchParams, setSearchParams] = useSearchParams();
+  const selectedFilter = searchParams.get('position') || 'All';
 
   const handleFilterClick = (position: string) => {
-    dispatch(setFilterPosition(position));
-
     searchParams.set('position', position);
     setSearchParams(searchParams);
   };
@@ -46,3 +40,4 @@ const Filter: React.FC = () => {
 };
 
 export default Filter;
+

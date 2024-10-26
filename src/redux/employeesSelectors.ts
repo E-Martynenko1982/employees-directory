@@ -1,5 +1,5 @@
 import { createSelector } from '@reduxjs/toolkit';
-import { User } from '../gateway/gateway';
+import { User } from '../types';
 import { selectEmployeesData } from './employeesSlice';
 import { selectFilterPosition } from './filterSlice';
 import { selectSortOrder } from './sortSlice';

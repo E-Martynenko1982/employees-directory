@@ -1,48 +1,45 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
-import { fetchDataUsers, User } from '../gateway/gateway';
+import { Employee, RequestStatus } from '../types';
 import { RootState } from './store';
 
 interface EmployeesState {
-  loaded: boolean;
-  data: User[];
-  status: 'idle' | 'loading' | 'succeeded' | 'failed';
-  error: string | null;
+  data: Employee[];
+  requestStatus: RequestStatus;
 }
 
 const initialState: EmployeesState = {
   data: [],
-  loaded: false,
-  status: 'idle',
-  error: null,
+  requestStatus: RequestStatus.loading,
 };
 
-export const fetchEmployees = createAsyncThunk('employees/fetchEmployees', async () => {
-  const response = await fetchDataUsers();
-  return response;
+export const fetchEmployees = createAsyncThunk<Employee[]>('employees/fetchEmployees', async () => {
+  const response = await fetch('https://66a0f8b17053166bcabd894e.mockapi.io/api/workers');
+  if (!response.ok) {
+    throw new Error('Network response was not ok');
+  }
+  return response.json();
 });
 
-const employeesSlice = createSlice({
+export const employeesSlice = createSlice({
   name: 'employees',
   initialState,
   reducers: {},
   extraReducers: builder => {
     builder
       .addCase(fetchEmployees.pending, state => {
-        state.status = 'loading';
-        state.loaded = false;
+        state.requestStatus = RequestStatus.loading;
       })
       .addCase(fetchEmployees.fulfilled, (state, action) => {
-        state.status = 'succeeded';
         state.data = action.payload;
-        state.loaded = true;
+        state.requestStatus = RequestStatus.succeeded;
       })
-      .addCase(fetchEmployees.rejected, (state, action) => {
-        state.status = 'failed';
-        state.error = action.error.message || 'Ошибка при загрузке сотрудников';
-        state.loaded = false;
+      .addCase(fetchEmployees.rejected, state => {
+        state.requestStatus = RequestStatus.failed;
       });
   },
 });
 
 export default employeesSlice.reducer;
-export const selectEmployeesData = (state: RootState): User[] => state.employees.data;
+
+// Добавляем экспорт селектора данных сотрудников
+export const selectEmployeesData = (state: RootState): Employee[] => state.employees.data;
