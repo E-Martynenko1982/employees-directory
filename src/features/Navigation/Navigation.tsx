@@ -25,43 +25,38 @@ const Navigation: React.FC = () => {
         </div>
       </div>
 
-      {isLargeScreen && (
-        <>
-          {!isOnline ? (
-            <div className="header__network-error">
-              <h4>Search</h4>
-              <p>
-                Не могу обновить данные.
-                Проверь соединение с интернетом.
-              </p>
-            </div>
-          ) : (
-            <div className="header__desktop-content">
-              <div className="header__desktop-title">Search</div>
-              <Search />
-            </div>
-          )}
-          <Filter />
-          <div className="header__line"></div>
-        </>
+      {/* Отображаем сообщение об ошибке сети, если офлайн */}
+      {!isOnline && (
+        <div className="header__network-error">
+          {isLargeScreen && <h4>Search</h4>}
+          <p>
+            Не могу обновить данные.
+            Проверь соединение с интернетом.
+          </p>
+        </div>
       )}
 
+      {/* Отображаем блок поиска на большом экране только если онлайн */}
+      {isLargeScreen && isOnline && (
+        <div className="header__desktop-content">
+          <div className="header__desktop-title">Search</div>
+          <Search />
+        </div>
+      )}
+
+      {/* Отображаем блок поиска на мобильном экране независимо от статуса сети */}
       {!isLargeScreen && (
         <div className="header__mobile-content">
           <Search />
         </div>
       )}
 
-      {!isLargeScreen && !isOnline && (
-        <div className="header__network-error">
-          <p>
-            Не могу обновить данные.<br />
-            Проверь соединение с интернетом.
-          </p>
-        </div>
-      )}
+      <Filter />
+
+      <div className="header__line"></div>
     </div>
   );
 };
 
 export default Navigation;
+

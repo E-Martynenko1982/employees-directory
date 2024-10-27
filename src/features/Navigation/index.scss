@@ -1,6 +1,9 @@
 @import "../../styles/variables.scss";
 @import "../../styles/breackpoints.scss";
 
+.header {
+  border-bottom: solid 1px $color-text-input-search;
+}
 .header__desktop-content {
   display: none;
 

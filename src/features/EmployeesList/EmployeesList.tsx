@@ -19,7 +19,6 @@ const EmployeesList: React.FC = () => {
   const filterPosition = searchParams.get('position') || 'All';
   const searchQuery = searchParams.get('searchText') || '';
 
-  // Если данные загружаются, отображаем скелетоны
   if (requestStatus === RequestStatus.loading) {
     return (
       <ul className="employees-list">
@@ -34,7 +33,6 @@ const EmployeesList: React.FC = () => {
     return <Error type="general" />;
   }
 
-  // Фильтрация и сортировка сотрудников
   let filteredEmployees = employees.slice();
 
   if (filterPosition !== 'All') {
@@ -88,3 +86,4 @@ const EmployeesList: React.FC = () => {
 };
 
 export default EmployeesList;
+
