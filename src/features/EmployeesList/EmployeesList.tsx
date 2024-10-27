@@ -3,6 +3,7 @@ import { useSelector } from 'react-redux';
 import { useSearchParams } from 'react-router-dom';
 import { selectEmployeesData } from '../../redux/employeesSlice';
 import EmployeeCard from './components/EmployeeCard';
+import EmployeeSkeleton from './EmployeeSkeleton/EmployeeSkeleton';
 import Error from '../Error';
 import './index.scss';
 import type { RootState } from '../../redux/store';
@@ -18,14 +19,22 @@ const EmployeesList: React.FC = () => {
   const filterPosition = searchParams.get('position') || 'All';
   const searchQuery = searchParams.get('searchText') || '';
 
+  // Если данные загружаются, отображаем скелетоны
   if (requestStatus === RequestStatus.loading) {
-    return <div>Загрузка...</div>;
+    return (
+      <ul className="employees-list">
+        {Array.from({ length: 5 }).map((_, index) => (
+          <EmployeeSkeleton key={index} />
+        ))}
+      </ul>
+    );
   }
 
   if (requestStatus === RequestStatus.failed) {
     return <Error type="general" />;
   }
 
+  // Фильтрация и сортировка сотрудников
   let filteredEmployees = employees.slice();
 
   if (filterPosition !== 'All') {
@@ -70,11 +79,11 @@ const EmployeesList: React.FC = () => {
   }
 
   return (
-    <div className="employees-list">
+    <ul className="employees-list">
       {filteredEmployees.map((employee: Employee) => (
         <EmployeeCard key={employee.id} employee={employee} />
       ))}
-    </div>
+    </ul>
   );
 };
 
