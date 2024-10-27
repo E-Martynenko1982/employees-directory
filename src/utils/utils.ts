@@ -15,3 +15,19 @@ export const getDayOfYear = (date: Date): number => {
   const oneDay = 1000 * 60 * 60 * 24;
   return Math.floor(diff / oneDay);
 };
+
+export function formatBirthDate(dateInput: string | number | Date): string {
+  const birthDate = new Date(dateInput);
+
+  const formatter = new Intl.DateTimeFormat('en-En', {
+    day: 'numeric',
+    month: 'long',
+  });
+
+  const parts = formatter.formatToParts(birthDate);
+
+  const day = parts.find(part => part.type === 'day')?.value;
+  const month = parts.find(part => part.type === 'month')?.value.substring(0, 3);
+
+  return `${day} ${month}`;
+}

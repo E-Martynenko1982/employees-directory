@@ -56,14 +56,11 @@ const EmployeesList: React.FC = () => {
     if (sortOrder === 'alphabetical') {
       return a.name.localeCompare(b.name);
     } else if (sortOrder === 'birthday') {
-      const aBirthDate = new Date(a.birthDate);
-      const bBirthDate = new Date(b.birthDate);
+      const aBirthYear = new Date(a.birthDate).getFullYear();
+      const bBirthYear = new Date(b.birthDate).getFullYear();
 
-      const aDayOfYear = aBirthDate.getMonth() * 31 + aBirthDate.getDate();
-      const bDayOfYear = bBirthDate.getMonth() * 31 + bBirthDate.getDate();
-
-      if (aDayOfYear !== bDayOfYear) {
-        return aDayOfYear - bDayOfYear;
+      if (aBirthYear !== bBirthYear) {
+        return aBirthYear - bBirthYear;
       }
 
       return a.name.localeCompare(b.name);
@@ -76,13 +73,37 @@ const EmployeesList: React.FC = () => {
     return <Error type="employeeSearch" />;
   }
 
-  return (
-    <ul className="employees-list">
-      {filteredEmployees.map((employee: Employee) => (
-        <EmployeeCard key={employee.id} employee={employee} />
-      ))}
-    </ul>
-  );
+  if (sortOrder === 'birthday') {
+    const elements: JSX.Element[] = [];
+    let currentYear: string | null = null;
+
+    filteredEmployees.forEach((employee) => {
+      const birthYear = new Date(employee.birthDate).getFullYear().toString();
+
+      if (birthYear !== currentYear) {
+        currentYear = birthYear;
+        elements.push(
+          <div key={`age-${birthYear}`} className="age">
+            <div className="age__line"></div>
+            <div className="age__title">{birthYear}</div>
+            <div className="age__line"></div>
+          </div>
+        );
+      }
+
+      elements.push(<EmployeeCard key={employee.id} employee={employee} />);
+    });
+
+    return <ul className="employees-list">{elements}</ul>;
+  } else {
+    return (
+      <ul className="employees-list">
+        {filteredEmployees.map((employee: Employee) => (
+          <EmployeeCard key={employee.id} employee={employee} />
+        ))}
+      </ul>
+    );
+  }
 };
 
 export default EmployeesList;

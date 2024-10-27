@@ -25,7 +25,6 @@ const Navigation: React.FC = () => {
         </div>
       </div>
 
-      {/* Отображаем сообщение об ошибке сети, если офлайн */}
       {!isOnline && (
         <div className="header__network-error">
           {isLargeScreen && <h4>Search</h4>}
@@ -36,7 +35,6 @@ const Navigation: React.FC = () => {
         </div>
       )}
 
-      {/* Отображаем блок поиска на большом экране только если онлайн */}
       {isLargeScreen && isOnline && (
         <div className="header__desktop-content">
           <div className="header__desktop-title">Search</div>
@@ -44,7 +42,6 @@ const Navigation: React.FC = () => {
         </div>
       )}
 
-      {/* Отображаем блок поиска на мобильном экране независимо от статуса сети */}
       {!isLargeScreen && (
         <div className="header__mobile-content">
           <Search />

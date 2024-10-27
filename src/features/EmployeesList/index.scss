@@ -40,3 +40,29 @@
     }
   }
 }
+
+.age {
+  display: flex;
+  align-items: center;
+
+  &__line {
+    width: 72px;
+    height: 1px;
+    background-color: $color-text-input-search;
+
+    @include desktop {
+      width: 620px;
+    }
+  }
+
+  &__title {
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    width: 160px;
+    font-size: 15px;
+    font-weight: $medium;
+    line-height: 20px;
+    color: $color-text-input-search;
+  }
+}

@@ -6,6 +6,14 @@
 
   &__title {
     display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 6px;
+  }
+
+  &__name-container {
+    display: flex;
+    align-items: center;
   }
 
   &__avatar {
@@ -14,15 +22,16 @@
     border-radius: 50%;
   }
 
-  &__name-container {
+  &__title-box {
     margin-left: 16px;
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    height: 60px;
   }
 
-  &__title-box {
+  /* Новый блок для имени и тега */
+  &__name-tag {
+    display: flex;
+    align-items: center;
   }
 
   &__name {
@@ -45,5 +54,11 @@
     font-weight: $regular;
     line-height: 16px;
     color: $employee-status-color;
+    margin-top: 4px;
+  }
+
+  &__birth-data {
+    font-size: 14px;
+    color: $main-text-color;
   }
 }
