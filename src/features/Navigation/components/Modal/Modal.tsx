@@ -22,7 +22,11 @@ const Modal: React.FC<ModalProps> = ({ isOpen, onClose }) => {
   const handleSortChange = (event: ChangeEvent<HTMLInputElement>) => {
     const sortOrder = event.target.value;
 
-    searchParams.set('sortBy', sortOrder);
+    if (sortOrder) {
+      searchParams.set('sortBy', sortOrder);
+    } else {
+      searchParams.delete('sortBy');
+    }
     setSearchParams(searchParams);
     onClose();
   };

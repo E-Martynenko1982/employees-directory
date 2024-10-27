@@ -21,7 +21,6 @@ const Search: React.FC = () => {
 
   return (
     <div className="header__search">
-
       <div className="header__search-container">
         <img src="/images/search-icon.png" alt="SearchIcon" className='header__search-icon' />
         <input

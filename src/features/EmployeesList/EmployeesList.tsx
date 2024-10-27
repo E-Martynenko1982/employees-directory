@@ -2,31 +2,37 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 import { useSearchParams } from 'react-router-dom';
 import { selectEmployeesData } from '../../redux/employeesSlice';
-import { selectSortOrder } from '../../redux/sortSlice';
 import EmployeeCard from './components/EmployeeCard';
 import Error from '../Error';
 import './index.scss';
 import type { RootState } from '../../redux/store';
-import { Employee } from '../../types';
+import { Employee, RequestStatus } from '../../types';
 
 const EmployeesList: React.FC = () => {
   const [searchParams] = useSearchParams();
 
   const employees = useSelector((state: RootState) => selectEmployeesData(state));
-  const sortOrder = useSelector((state: RootState) => selectSortOrder(state));
+  const requestStatus = useSelector((state: RootState) => state.employees.requestStatus);
 
+  const sortOrder = searchParams.get('sortBy') || 'alphabetical';
   const filterPosition = searchParams.get('position') || 'All';
   const searchQuery = searchParams.get('searchText') || '';
 
-  let filteredEmployees = employees.slice();
+  if (requestStatus === RequestStatus.loading) {
+    return <div>Загрузка...</div>;
+  }
 
+  if (requestStatus === RequestStatus.failed) {
+    return <Error type="general" />;
+  }
+
+  let filteredEmployees = employees.slice();
 
   if (filterPosition !== 'All') {
     filteredEmployees = filteredEmployees.filter(
       (user: Employee) => user.position.toLowerCase() === filterPosition.toLowerCase()
     );
   }
-
 
   if (searchQuery.trim() !== '') {
     const query = searchQuery.trim().toLowerCase();
@@ -38,7 +44,6 @@ const EmployeesList: React.FC = () => {
       );
     });
   }
-
 
   filteredEmployees.sort((a: Employee, b: Employee) => {
     if (sortOrder === 'alphabetical') {

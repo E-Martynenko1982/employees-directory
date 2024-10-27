@@ -2,10 +2,10 @@ import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import { Employee, RequestStatus } from '../types';
 import { RootState } from './store';
 
-interface EmployeesState {
+type EmployeesState = {
   data: Employee[];
   requestStatus: RequestStatus;
-}
+};
 
 const initialState: EmployeesState = {
   data: [],
@@ -41,5 +41,4 @@ export const employeesSlice = createSlice({
 
 export default employeesSlice.reducer;
 
-// Добавляем экспорт селектора данных сотрудников
 export const selectEmployeesData = (state: RootState): Employee[] => state.employees.data;

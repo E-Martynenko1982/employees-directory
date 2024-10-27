@@ -1,10 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { User } from '../../../types';
+import { Employee } from '../../../types';
 import './index.scss';
 
 interface EmployeeCardProps {
-  employee: User;
+  employee: Employee;
 }
 
 const EmployeeCard: React.FC<EmployeeCardProps> = ({ employee }) => {

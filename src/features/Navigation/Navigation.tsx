@@ -1,7 +1,6 @@
 import React from 'react';
 import { useLocation } from 'react-router-dom';
-import { useSelector } from 'react-redux';
-import type { RootState } from '../../redux/store';
+import useNetworkStatus from '../../hooks/useNetworkStatus';
 import Filter from './components/Filter/Filter';
 import Search from './components/Search/Search';
 import useWindowWidth from '../../hooks/useWindowWidth';
@@ -10,15 +9,13 @@ import './index.scss';
 const Navigation: React.FC = () => {
   const location = useLocation();
   const isEmployeesProfile = location.pathname.startsWith('/employees/');
-  const isOnline = useSelector((state: RootState) => state.employees);
+  const isOnline = useNetworkStatus();
   const windowWidth = useWindowWidth();
 
   const isLargeScreen = windowWidth > 1279;
 
   return (
     <div className={`header ${isEmployeesProfile ? 'header__icons-bar--profile' : ''}`}>
-
-
       <div className="header__icons-bar">
         <div className="header__time">9:41</div>
         <div className="header__icons">
@@ -27,7 +24,6 @@ const Navigation: React.FC = () => {
           <img src="/images/battery.png" alt="battery" />
         </div>
       </div>
-
 
       {isLargeScreen && (
         <>
@@ -50,13 +46,11 @@ const Navigation: React.FC = () => {
         </>
       )}
 
-
       {!isLargeScreen && (
         <div className="header__mobile-content">
           <Search />
         </div>
       )}
-
 
       {!isLargeScreen && !isOnline && (
         <div className="header__network-error">

@@ -1,5 +1,3 @@
-// src/App.tsx
-
 import React, { useEffect } from "react";
 import { Routes, Route, useLocation, matchPath } from "react-router-dom";
 import { useDispatch, useSelector } from 'react-redux';
@@ -15,15 +13,15 @@ import "./app.scss";
 const App: React.FC = () => {
   const dispatch = useDispatch<AppDispatch>();
   const employeesLoaded = useSelector((state: RootState) => state.employees.data);
-  const location = useLocation(); // Теперь useLocation() можно использовать здесь
+  const location = useLocation();
 
-  useNetworkStatus();
+  const isOnline = useNetworkStatus();
 
   useEffect(() => {
-    if (!employeesLoaded || employeesLoaded.length === 0) {
+    if (isOnline && (!employeesLoaded || employeesLoaded.length === 0)) {
       dispatch(fetchEmployees());
     }
-  }, [dispatch, employeesLoaded]);
+  }, [dispatch, employeesLoaded, isOnline]);
 
   const knownRoutes = ['/', '/employees/:id'];
   const isUnknownRoute = !knownRoutes.some((path) => matchPath(path, location.pathname));
