@@ -1,6 +1,6 @@
 import React, { ChangeEvent } from "react";
 import { useSearchParams } from 'react-router-dom';
-import Dialog from '@mui/material/Dialog';
+
 import DialogTitle from '@mui/material/DialogTitle';
 import FormControl from '@mui/material/FormControl';
 import RadioGroup from '@mui/material/RadioGroup';
@@ -8,6 +8,7 @@ import FormControlLabel from '@mui/material/FormControlLabel';
 import Radio from '@mui/material/Radio';
 import IconButton from '@mui/material/IconButton';
 import CloseIcon from '@mui/icons-material/Close';
+import StyledDialog from "./StyledDialog";
 import "./index.scss";
 
 interface ModalProps {
@@ -32,7 +33,9 @@ const Modal: React.FC<ModalProps> = ({ isOpen, onClose }) => {
   };
 
   return (
-    <Dialog open={isOpen} onClose={onClose}>
+    <StyledDialog open={isOpen} onClose={onClose}
+
+    >
       <DialogTitle>
         Сортировка
         <IconButton
@@ -61,7 +64,7 @@ const Modal: React.FC<ModalProps> = ({ isOpen, onClose }) => {
           />
         </RadioGroup>
       </FormControl>
-    </Dialog>
+    </StyledDialog>
   );
 };
 
