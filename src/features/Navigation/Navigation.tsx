@@ -1,5 +1,3 @@
-// src/features/Navigation/Navigation.tsx
-
 import React from 'react';
 import useNetworkStatus from '../../hooks/useNetworkStatus';
 import { useLocation, matchPath } from 'react-router-dom';
