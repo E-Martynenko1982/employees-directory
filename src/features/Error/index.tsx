@@ -24,13 +24,13 @@ const Error: React.FC<ErrorProps> = ({ type }) => {
       <p className="error__message">{description}</p>
       {button && (
         <Button
-          variant="contained"
+          variant="text"
           onClick={handleButtonClick}
           sx={{
             fontFamily: "Inter, sans-serif",
             fontSize: "16px",
             fontWeight: "600",
-            color: "#ffffff",
+            color: "#6534ff",
             textTransform: "none",
           }}
         >

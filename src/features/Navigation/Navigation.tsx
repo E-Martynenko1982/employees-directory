@@ -1,5 +1,5 @@
 import React from 'react';
-import { useLocation } from 'react-router-dom';
+import { useLocation, matchPath } from 'react-router-dom';
 import useNetworkStatus from '../../hooks/useNetworkStatus';
 import Filter from './components/Filter/Filter';
 import Search from './components/Search/Search';
@@ -8,10 +8,9 @@ import './index.scss';
 
 const Navigation: React.FC = () => {
   const location = useLocation();
-  const isEmployeesProfile = location.pathname.startsWith('/employees/');
+  const isEmployeesProfile = matchPath('/employees/:id', location.pathname) !== null;
   const isOnline = useNetworkStatus();
   const windowWidth = useWindowWidth();
-
   const isLargeScreen = windowWidth > 1279;
 
   return (

@@ -9,7 +9,6 @@ import Radio from '@mui/material/Radio';
 import IconButton from '@mui/material/IconButton';
 import CloseIcon from '@mui/icons-material/Close';
 import StyledDialog from "./StyledDialog";
-import "./index.scss";
 
 interface ModalProps {
   isOpen: boolean;

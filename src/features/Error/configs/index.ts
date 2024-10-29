@@ -22,7 +22,6 @@ const errorMessageData: ErrorMessageData = {
     imgUrl: '/images/magnifying-glass.png',
     title: "We didn't find anyone",
     description: 'Try to adjust your request',
-    button: 'Back to list',
   },
   employeesSearch: {
     imgUrl: '/images/magnifying-glass.png',
