@@ -2,10 +2,9 @@ import React from 'react';
 import useNetworkStatus from '../../hooks/useNetworkStatus';
 import { useLocation, matchPath } from 'react-router-dom';
 import useMediaQuery from '@mui/material/useMediaQuery';
-
-import "./index.scss";
 import Filter from './components/Filter/Filter';
 import Search from './components/Search/Search';
+import "./index.scss";
 
 const Navigation: React.FC = () => {
   const isOnline = useNetworkStatus();

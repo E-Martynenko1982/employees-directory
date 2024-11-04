@@ -10,14 +10,11 @@ const StyledDialog = styled(Dialog)(({ theme }) => ({
       width: '375px'
     },
     [theme.breakpoints.up("lg")]: {
-
-      width: '1280px'
+      width: '100%'
     }
-
   },
 
   '& .MuiPaper-root': {
-
     position: 'fixed',
     width: '359px',
     height: '218px',
@@ -30,6 +27,7 @@ const StyledDialog = styled(Dialog)(({ theme }) => ({
       transform: 'translateX(-50%)',
     },
     [theme.breakpoints.up('lg')]: {
+      display: 'flex',
       position: 'absolute',
       top: '50%',
       left: '50%',
@@ -37,6 +35,21 @@ const StyledDialog = styled(Dialog)(({ theme }) => ({
       borderRadius: '10px',
     }
   },
+
+  '& .MuiFormControlLabel-label': {
+    display: 'flex',
+    alignItems: 'center',
+    height: '60px',
+    fontSize: '16px',
+    fontWeight: "500",
+    lineHeight: "20px",
+    color: "#050510"
+  },
+
+  '& .MuiRadio-colorPrimary': {
+    color: '#6534ff',
+  }
+
 }));
 
 export default StyledDialog;

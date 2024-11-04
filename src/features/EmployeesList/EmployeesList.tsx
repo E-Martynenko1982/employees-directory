@@ -91,7 +91,9 @@ const EmployeesList: React.FC = () => {
         );
       }
 
-      elements.push(<EmployeeCard key={employee.id} employee={employee} />);
+      elements.push(
+        <EmployeeCard key={employee.id} employee={employee} showBirthDate={true} />
+      );
     });
 
     return <ul className="employees-list">{elements}</ul>;
@@ -99,7 +101,7 @@ const EmployeesList: React.FC = () => {
     return (
       <ul className="employees-list">
         {filteredEmployees.map((employee: Employee) => (
-          <EmployeeCard key={employee.id} employee={employee} />
+          <EmployeeCard key={employee.id} employee={employee} showBirthDate={false} />
         ))}
       </ul>
     );
@@ -107,4 +109,3 @@ const EmployeesList: React.FC = () => {
 };
 
 export default EmployeesList;
-

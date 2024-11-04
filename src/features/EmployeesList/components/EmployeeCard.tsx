@@ -6,9 +6,10 @@ import { formatBirthDate } from '../../../utils/utils';
 
 type EmployeeCardProps = {
   employee: Employee;
+  showBirthDate?: boolean;
 };
 
-const EmployeeCard: React.FC<EmployeeCardProps> = ({ employee }) => {
+const EmployeeCard: React.FC<EmployeeCardProps> = ({ employee, showBirthDate = false }) => {
   const formattedDate = formatBirthDate(employee.birthDate);
 
   return (
@@ -24,7 +25,11 @@ const EmployeeCard: React.FC<EmployeeCardProps> = ({ employee }) => {
             <span className="employee-card__position">{employee.position}</span>
           </div>
         </div>
-        <div className="employee-card__birth-data">{formattedDate}</div>
+        {
+          showBirthDate && (
+            <div className="employee-card__birth-data">{formattedDate}</div>
+          )
+        }
       </div>
     </Link>
   );
