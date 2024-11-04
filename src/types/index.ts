@@ -13,4 +13,5 @@ export enum RequestStatus {
   loading = 'loading',
   succeeded = 'succeeded',
   failed = 'failed',
+  success = "success",
 }
