@@ -1,5 +1,5 @@
 import React, { ChangeEvent } from 'react';
-import Sort from "../Sort/Sort";
+import Sort from "../Sort";
 import { useSearchParams } from 'react-router-dom';
 import "./index.scss";
 

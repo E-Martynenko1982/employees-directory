@@ -1,13 +1,14 @@
 import React from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
+import moment from 'moment';
+//import 'moment/locale/ru';
 import type { RootState } from '../../redux/store';
-
 import { selectEmployeesData } from '../../redux/employeesSlice';
-import { calculateAge } from '../../utils/utils';
+import { calculateAge } from '../../utils';
 import Error from '../Error';
-import "./index.scss";
 import { Employee, RequestStatus } from '../../types';
+import "./index.scss";
 
 const EmployeesProfile: React.FC = () => {
   const { id } = useParams<{ id: string }>();
@@ -33,6 +34,8 @@ const EmployeesProfile: React.FC = () => {
     return <Error type="employeeSearch" />;
   }
 
+  const formattedDate = moment(user.birthDate).locale('ru').format('D MMMM YYYY');
+
   return (
     <div className="profile">
       <div className="profile__title">
@@ -54,20 +57,7 @@ const EmployeesProfile: React.FC = () => {
         <div className="profile__info-date">
           <span className="profile__info-bd">
             <img src="/images/star.svg" alt="star-icon" className='profile__icon' />
-            {(() => {
-              const date = new Date(user.birthDate);
-              const formatter = new Intl.DateTimeFormat('ru-RU', {
-                day: 'numeric',
-                month: 'long',
-                year: 'numeric',
-              });
-              const parts = formatter.formatToParts(date);
-              const filteredParts = parts.filter(
-                part => !(part.type === 'literal' && part.value.trim() === 'г.')
-              );
-              const formattedDate = filteredParts.map(part => part.value).join('');
-              return formattedDate;
-            })()}
+            {formattedDate}
           </span>
           <span className="profile__info-age">{calculateAge(user.birthDate)} лет</span>
         </div>
@@ -82,3 +72,4 @@ const EmployeesProfile: React.FC = () => {
 };
 
 export default EmployeesProfile;
+

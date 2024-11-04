@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux';
 import { useSearchParams } from 'react-router-dom';
 import { selectEmployeesData } from '../../redux/employeesSlice';
 import EmployeeCard from './components/EmployeeCard';
-import EmployeeSkeleton from './EmployeeSkeleton/EmployeeSkeleton';
+import EmployeeSkeleton from './components/EmployeeSkeleton';
 import Error from '../Error';
 import './index.scss';
 import type { RootState } from '../../redux/store';
@@ -109,3 +109,10 @@ const EmployeesList: React.FC = () => {
 };
 
 export default EmployeesList;
+
+
+
+
+
+
+

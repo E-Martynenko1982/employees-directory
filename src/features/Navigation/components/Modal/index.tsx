@@ -7,7 +7,7 @@ import FormControlLabel from '@mui/material/FormControlLabel';
 import Radio from '@mui/material/Radio';
 import IconButton from '@mui/material/IconButton';
 import CloseIcon from '@mui/icons-material/Close';
-import StyledDialog from "./components/Dialog/";
+import StyledDialog from "./components/Dialog";
 
 type ModalProps = {
   isOpen: boolean;

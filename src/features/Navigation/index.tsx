@@ -2,8 +2,8 @@ import React from 'react';
 import useNetworkStatus from '../../hooks/useNetworkStatus';
 import { useLocation, matchPath } from 'react-router-dom';
 import useMediaQuery from '@mui/material/useMediaQuery';
-import Filter from './components/Filter/Filter';
-import Search from './components/Search/Search';
+import Filter from './components/Filter';
+import Search from './components/Search';
 import "./index.scss";
 
 const Navigation: React.FC = () => {
@@ -18,19 +18,6 @@ const Navigation: React.FC = () => {
 
   return (
     <header className={`header ${isProfilePage ? 'header--profile' : ''}`}>
-      {isProfilePage && isMobile ? (
-        <div></div>
-      ) : (
-        <div className="header__icons-bar">
-          <div className="header__time">9:41</div>
-          <div className="header__icons">
-            <img src="/images/signal-icon.png" alt="signal" />
-            <img src="/images/Wi-Fi.png" alt="wi-fi" />
-            <img src="/images/battery.png" alt="battery" />
-          </div>
-        </div>
-      )}
-
       {!isProfilePage && (
         <>
           {!isOnline && (
@@ -57,7 +44,7 @@ const Navigation: React.FC = () => {
           )}
 
           <Filter />
-          <div className="header__line"></div>
+          <div className="header__line" />
         </>
       )}
     </header>

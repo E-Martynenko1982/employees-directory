@@ -1,8 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Employee } from '../../../types';
+import { Employee } from '../../../../types';
+import { formatBirthDate } from '../../../../utils';
 import './index.scss';
-import { formatBirthDate } from '../../../utils/utils';
 
 type EmployeeCardProps = {
   employee: Employee;
