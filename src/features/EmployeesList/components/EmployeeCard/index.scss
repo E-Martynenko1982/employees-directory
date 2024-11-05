@@ -28,7 +28,6 @@
     flex-direction: column;
   }
 
-  /* Новый блок для имени и тега */
   &__name-tag {
     display: flex;
     align-items: center;
@@ -57,8 +56,40 @@
     margin-top: 4px;
   }
 
-  &__birth-data {
+  &__birth-date {
     font-size: 14px;
     color: $main-text-color;
+  }
+
+  &__birth-date-container {
+    display: flex;
+    align-items: center;
+    width: 328px;
+
+    @include desktop {
+      width: 1280px;
+      padding: 0 24px;
+    }
+  }
+
+  &__birth-date-line {
+    height: 2px;
+    width: 72px;
+    background-color: $color-text-input-search;
+
+    @include desktop {
+      width: 588px;
+    }
+  }
+
+  &__date-divider {
+    display: flex;
+    justify-content: center;
+    margin: 0 12px;
+    width: 160px;
+    font-size: 15px;
+    font-weight: $medium;
+    line-height: 20px;
+    color: $color-text-input-search;
   }
 }

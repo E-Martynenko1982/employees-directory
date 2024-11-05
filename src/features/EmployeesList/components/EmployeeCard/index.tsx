@@ -13,8 +13,6 @@ type EmployeeCardProps = {
 
 const EmployeeCard: React.FC<EmployeeCardProps> = ({ employee, prevEmployee, sortBy }) => {
   const birthDate = employee.birthDate;
-
-  // Determine if the divider should be displayed
   const isDividerActive =
     sortBy === 'birthday' &&
     (!prevEmployee || moment(birthDate).format('YYYY') !== moment(prevEmployee.birthDate).format('YYYY'));
@@ -24,7 +22,12 @@ const EmployeeCard: React.FC<EmployeeCardProps> = ({ employee, prevEmployee, sor
   return (
     <>
       {isDividerActive && (
-        <p className="employee-card__date-divider">{moment(birthDate).format('YYYY')}</p>
+        <div className="employee-card__birth-date-container">
+          <div className="employee-card__birth-date-line" />
+          <p className="employee-card__date-divider">{moment(birthDate).format('YYYY')}</p>
+          <div className="employee-card__birth-date-line" />
+        </div>
+
       )}
       <Link to={`/employees/${employee.id}`} className="employee-card">
         <div className="employee-card__title">
@@ -39,10 +42,10 @@ const EmployeeCard: React.FC<EmployeeCardProps> = ({ employee, prevEmployee, sor
             </div>
           </div>
           {sortBy === 'birthday' && (
-            <div className="employee-card__birth-data">{formattedDate}</div>
+            <div className="employee-card__birth-date">{formattedDate}</div>
           )}
         </div>
-      </Link>
+      </Link >
     </>
   );
 };
