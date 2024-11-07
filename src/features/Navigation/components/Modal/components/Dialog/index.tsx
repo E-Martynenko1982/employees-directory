@@ -13,12 +13,22 @@ const StyledDialog = styled(Dialog)(({ theme }) => ({
       width: '100%'
     }
   },
+  '& .MuiTypography-root': {
+    padding: 0,
+    marginLeft: '6px'
+  },
+
+  '& .MuiButtonBase-root': {
+    width: '24px',
+    height: '24px',
+
+  },
 
   '& .MuiPaper-root': {
     position: 'fixed',
-    width: '359px',
-    height: '218px',
-    borderRadius: '10px 10px 0 0',
+    width: '373px',
+    height: '192px',
+    borderRadius: '5px 5px 0 0',
     boxShadow: '0 -2px 10px rgba(0, 0, 0, 0.3)',
     [theme.breakpoints.down('lg')]: {
       bottom: 0,
@@ -51,6 +61,7 @@ const StyledDialog = styled(Dialog)(({ theme }) => ({
   },
 
   '& .PrivateSwitchBase-input': {
+
     color: '#6534ff',
   }
 

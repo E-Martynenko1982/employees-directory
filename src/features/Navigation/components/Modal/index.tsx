@@ -35,6 +35,7 @@ const Modal: React.FC<ModalProps> = ({ isOpen, onClose }) => {
     >
       <DialogTitle
         sx={{
+          marginTop: "24px",
           textAlign: "center",
           fontSize: "20px",
           lineHeight: "24px",
@@ -47,14 +48,20 @@ const Modal: React.FC<ModalProps> = ({ isOpen, onClose }) => {
           aria-label="close"
           onClick={onClose}
           sx={{
+
             position: 'absolute',
-            right: 8,
-            top: 8,
+            right: '20px',
+            top: '24px',
             color: "#c3c3c6",
             backgroundColor: "#f7f7f8",
           }}
         >
-          <CloseIcon />
+          <CloseIcon
+            sx={{
+              width: "18px",
+              height: "18px",
+            }}
+          />
         </IconButton>
       </DialogTitle>
       <FormControl component="fieldset" sx={{
@@ -70,11 +77,18 @@ const Modal: React.FC<ModalProps> = ({ isOpen, onClose }) => {
             value="alphabetical"
             control={<Radio />}
             label="По алфавиту"
+            sx={{
+              marginTop: "14px",
+              marginLeft: '2px'
+            }}
           />
           <FormControlLabel
             value="birthday"
             control={<Radio />}
             label="По дню рождения"
+            sx={{
+              marginLeft: '2px'
+            }}
           />
         </RadioGroup>
       </FormControl>
