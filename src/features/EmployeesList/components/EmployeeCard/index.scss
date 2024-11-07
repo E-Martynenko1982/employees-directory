@@ -8,7 +8,6 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    //padding: 6px;
   }
 
   &__name-container {
@@ -17,6 +16,7 @@
   }
 
   &__avatar {
+    margin-top: 1px;
     height: 72px;
     width: 72px;
     border-radius: 50%;

@@ -28,11 +28,7 @@
   }
 
   &__mobile-content {
-    display: block;
-
-    @include desktop {
-      display: none;
-    }
+    margin-top: 50px;
   }
 
   &__network-error {

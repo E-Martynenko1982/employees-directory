@@ -48,6 +48,10 @@ const StyledDialog = styled(Dialog)(({ theme }) => ({
 
   '& .MuiRadio-colorPrimary': {
     color: '#6534ff',
+  },
+
+  '& .PrivateSwitchBase-input': {
+    color: '#6534ff',
   }
 
 }));
