@@ -8,7 +8,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 6px;
+    //padding: 6px;
   }
 
   &__name-container {
@@ -49,11 +49,12 @@
   }
 
   &__position {
+    margin-top: 4px;
     font-size: 13px;
     font-weight: $regular;
     line-height: 16px;
     color: $employee-status-color;
-    margin-top: 4px;
+    text-transform: capitalize;
   }
 
   &__birth-date {

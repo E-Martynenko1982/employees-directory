@@ -1,7 +1,7 @@
 @import "../../../../styles/variables.scss";
 @import "../../../../styles/breackpoints.scss";
 
-.header__filter-list {
+.header-filter__list {
   display: flex;
   justify-content: space-between;
   padding: 0;
@@ -14,23 +14,23 @@
   overflow-x: auto;
 }
 
-.header__filter-list::-webkit-scrollbar {
+.header-filter__list::-webkit-scrollbar {
   height: 0;
 }
 
-.header__filter-item {
+.header-filter__item {
   padding: 0;
   display: flex;
   flex-grow: 1;
   height: 36px;
 }
 
-.header__filter-item--button-active {
+.header__filter-item-button-active {
   border-bottom: solid $active-burger-color 3px;
   color: $color-filterTabs-active;
 }
 
-.header__filter-item--button {
+.header-filter__item-button {
   padding: 0;
   flex-grow: 1;
   height: 36px;

@@ -2,10 +2,10 @@
 @import "../../styles/breackpoints.scss";
 
 .employees-list {
-  padding: 16px 16px 0;
+  padding: 0 16px;
   display: flex;
   flex-direction: column;
-  gap: 4px;
+  gap: 16px;
   min-height: calc(100vh - 140px);
 
   &__year {

@@ -12,6 +12,7 @@ type EmployeeCardProps = {
 };
 
 const EmployeeCard: React.FC<EmployeeCardProps> = ({ employee, prevEmployee, sortBy }) => {
+
   const birthDate = employee.birthDate;
   const isDividerActive =
     sortBy === 'birthday' &&
