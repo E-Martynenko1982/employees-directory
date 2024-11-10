@@ -11,12 +11,8 @@ const EmployeeSkeleton: React.FC = () => (
         <Skeleton circle={true} height={72} width={72} />
       </div>
       <div className="employee-info">
-        <h2 className="employee-name">
-          <Skeleton width={144} height={16} />
-        </h2>
-        <span className="employee-tag">
-          <Skeleton width={80} height={12} />
-        </span>
+        <Skeleton className="employee-name" width={144} height={16} />
+        <Skeleton className="employee-tag" width={80} height={12} />
       </div>
     </div>
   </li>

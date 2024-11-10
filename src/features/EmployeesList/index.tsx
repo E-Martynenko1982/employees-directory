@@ -53,7 +53,7 @@ const EmployeesList: React.FC = () => {
   if (requestStatus === RequestStatus.loading) {
     return (
       <ul className="employees-list">
-        {Array.from({ length: 5 }).map((_, index) => (
+        {Array.from({ length: 10 }).map((_, index) => (
           <EmployeeSkeleton key={index} />
         ))}
       </ul>

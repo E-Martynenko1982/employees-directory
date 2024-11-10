@@ -1,12 +1,28 @@
+.employee-item {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
 .employee-content {
   display: flex;
+  align-items: center;
 }
 .employee-info {
   margin-left: 16px;
   padding: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
 }
 
 .employee-tag {
-  width: 80px;
-  height: 12px;
+  border-radius: 6px;
+}
+
+.employee-name {
+  margin: 0;
+  margin-bottom: 6px;
+  padding: 0;
+  border-radius: 8px;
 }
