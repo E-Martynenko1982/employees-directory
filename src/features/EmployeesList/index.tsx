@@ -73,12 +73,11 @@ const EmployeesList: React.FC = () => {
   return (
     <ul className="employees-list">
       {filteredEmployees.map((employee: Employee, index: number) => {
-        const prevEmployee = filteredEmployees[index - 1];
         return (
           <EmployeeCard
             key={employee.id}
             employee={employee}
-            prevEmployee={prevEmployee}
+            prevEmployee={filteredEmployees[index - 1]}
             sortBy={searchParams.get('sortBy') || 'alphabetical'}
           />
         );

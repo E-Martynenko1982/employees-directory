@@ -13,19 +13,15 @@ const Error: React.FC<ErrorProps> = ({ type }) => {
 
   const { imgUrl, title, description, button } = errorMessageData[type];
 
-  const handleButtonClick = () => {
-    navigate('/');
-  };
-
   return (
     <div className="error">
       <img src={imgUrl} alt="Error-icon" />
       <h4 className="error__title">{title}</h4>
       <p className="error__message">{description}</p>
       {button && (
-        <Button
+        <Button className="error__back-button"
           variant="text"
-          onClick={handleButtonClick}
+          onClick={() => navigate('/')}
           sx={{
             fontFamily: "Inter, sans-serif",
             fontSize: "16px",

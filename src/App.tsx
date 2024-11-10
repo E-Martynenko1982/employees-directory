@@ -1,13 +1,13 @@
 import React, { useEffect } from "react";
 import { Routes, Route, useLocation, matchPath } from "react-router-dom";
 import { useDispatch, useSelector } from 'react-redux';
-import type { RootState, AppDispatch } from "./redux/store";
 import Navigation from "./features/Navigation";
 import EmployeesList from "./features/EmployeesList";
 import EmployeesProfile from "./features/EmployeeProfile";
 import Error from "./features/Error";
 import useNetworkStatus from "./hooks/useNetworkStatus";
 import { fetchEmployees } from "./redux/employeesSlice";
+import type { RootState, AppDispatch } from "./redux/store";
 import "./app.scss";
 
 const App: React.FC = () => {

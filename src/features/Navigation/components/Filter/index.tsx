@@ -1,5 +1,6 @@
 import React from "react";
 import { useSearchParams } from 'react-router-dom';
+import filters from "./configs";
 import "./index.scss";
 
 const Filter: React.FC = () => {
@@ -11,24 +12,17 @@ const Filter: React.FC = () => {
     setSearchParams(searchParams);
   };
 
-  const filters = [
-    { label: 'All', value: 'All' },
-    { label: 'Designers', value: 'Designer' },
-    { label: 'Analysts', value: 'analyst' },
-    { label: 'Managers', value: 'manager' },
-    { label: 'iOS', value: 'ios' },
-    { label: 'Android', value: 'android' },
-  ];
+
 
   return (
     <ul className="header-filter__list">
       {filters.map((filter) => (
         <li
           key={filter.value}
-          className={`header-filter__item ${selectedFilter === filter.value ? 'header__filter-item-button-active' : ''}`}
+          className="header-filter__item"
         >
           <button
-            className={`header-filter__item-button ${selectedFilter === filter.value ? 'header__filter-item-button-active' : ''}`}
+            className={`header-filter__item-button ${selectedFilter === filter.value ? 'header-filter__item-button-active' : ''}`}
             onClick={() => handleFilterClick(filter.value)}
           >
             {filter.label}
@@ -40,4 +34,5 @@ const Filter: React.FC = () => {
 };
 
 export default Filter;
+
 

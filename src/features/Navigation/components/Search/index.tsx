@@ -10,12 +10,8 @@ const Search: React.FC = () => {
 
   const handleInputChange = (event: ChangeEvent<HTMLInputElement>) => {
     const query = event.target.value;
-
-    if (query) {
-      searchParams.set('searchText', query);
-    } else {
-      searchParams.delete('searchText');
-    }
+    // eslint-disable-next-line @typescript-eslint/no-unused-expressions
+    query ? searchParams.set('searchText', query) : searchParams.delete('searchText');
     setSearchParams(searchParams);
   };
 

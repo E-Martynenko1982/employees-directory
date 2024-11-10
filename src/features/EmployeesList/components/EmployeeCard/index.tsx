@@ -2,8 +2,8 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { Employee } from '../../../../types';
 import { formatBirthDate } from '../../../../utils';
-import './index.scss';
 import moment from 'moment';
+import './index.scss';
 
 type EmployeeCardProps = {
   employee: Employee;
@@ -19,6 +19,7 @@ const EmployeeCard: React.FC<EmployeeCardProps> = ({ employee, prevEmployee, sor
     (!prevEmployee || moment(birthDate).format('YYYY') !== moment(prevEmployee.birthDate).format('YYYY'));
 
   const formattedDate = formatBirthDate(birthDate);
+  const { avatar, name, tag, position, id } = employee;
 
   return (
     <>
@@ -30,16 +31,16 @@ const EmployeeCard: React.FC<EmployeeCardProps> = ({ employee, prevEmployee, sor
         </div>
 
       )}
-      <Link to={`/employees/${employee.id}`} className="employee-card">
+      <Link to={`/employees/${id}`} className="employee-card">
         <div className="employee-card__title">
           <div className="employee-card__name-container">
-            <img className="employee-card__avatar" src={employee.avatar} alt="avatar" />
+            <img className="employee-card__avatar" src={avatar} alt="avatar" />
             <div className="employee-card__title-box">
               <div className="employee-card__name-tag">
-                <span className="employee-card__name">{employee.name}</span>
-                <span className="employee-card__tag">{employee.tag}</span>
+                <span className="employee-card__name">{name}</span>
+                <span className="employee-card__tag">{tag}</span>
               </div>
-              <span className="employee-card__position">{employee.position}</span>
+              <span className="employee-card__position">{position}</span>
             </div>
           </div>
           {sortBy === 'birthday' && (

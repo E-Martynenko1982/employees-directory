@@ -1,44 +1,47 @@
 @import "../../../../styles/variables.scss";
 @import "../../../../styles/breackpoints.scss";
 
-.header-filter__list {
-  display: flex;
-  justify-content: space-between;
-  padding: 0;
-  margin-left: 16px;
-  margin-right: 0;
-  margin-top: 8px;
-  margin-bottom: 0;
-  width: 467px;
-  list-style: none;
-  overflow-x: auto;
-}
+.header-filter {
+  &__list {
+    display: flex;
+    justify-content: space-between;
+    padding: 0;
+    margin: 8px 0 0 16px;
+    width: 467px;
+    list-style: none;
+    overflow-x: auto;
 
-.header-filter__list::-webkit-scrollbar {
-  height: 0;
-}
+    &::-webkit-scrollbar {
+      height: 0;
+    }
+  }
 
-.header-filter__item {
-  padding: 0;
-  display: flex;
-  flex-grow: 1;
-  height: 36px;
-}
+  &__item {
+    display: flex;
+    flex-grow: 1;
+    padding: 0;
+    height: 36px;
+  }
 
-.header__filter-item-button-active {
-  border-bottom: solid $active-burger-color 1px;
-  color: $color-filterTabs-active;
-}
+  &__item-button {
+    flex-grow: 1;
+    height: 36px;
+    font-size: 15px;
+    line-height: 36px;
+    color: $color-filterTabs-unActive;
+    border: none;
+    background: none;
+    outline: none;
+    cursor: pointer;
+    padding: 0;
 
-.header-filter__item-button {
-  padding: 0;
-  flex-grow: 1;
-  height: 36px;
-  font-size: 15px;
-  line-height: 36px;
-  color: $color-filterTabs-unActive;
-  border: none;
-  background: none;
-  outline: none;
-  cursor: pointer;
+    &:hover {
+      color: $color-filterTabs-active;
+    }
+  }
+
+  &__item-button-active {
+    border-bottom: solid 1px $active-burger-color;
+    color: $color-filterTabs-active;
+  }
 }
